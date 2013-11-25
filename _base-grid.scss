@@ -1,0 +1,331 @@
+@import "_mixins.scss";
+
+//
+// Responsive Breakpoints
+//
+// add responsive breakpoints to your seletors
+// options: @include break($point);
+// 		$point options: desk, tablet, v-tablet, mobile, v-mobile
+
+@mixin break($point) {  
+	@if $point == desk {
+		@media screen { @content }
+	}
+	@if $point == tablet {
+		@media only screen and (max-width: $tablet) { @content }
+	}
+	@if $point == v-tablet {
+		@media only screen and (max-width: $v-tablet) { @content }
+	}
+	@if $point == mobile {
+		@media only screen and (max-width: $mobile)  { @content }
+	}
+	@else if $point == v-mobile {
+		@media only screen and (max-width: $v-mobile)  { @content }
+	}
+}
+
+@mixin break-contain($pt-group) {  
+	@if $pt-group == desk {
+		@media only screen and (min-width: $tablet) { @content }
+	}
+	@if $pt-group == tablet-desk {
+		@media only screen and (min-width: $v-tablet) and (max-width: $tablet) { @content }
+	}
+	@if $pt-group == v-tablet-tablet {
+		@media only screen and (min-width: $mobile) and (max-width: $v-tablet) { @content }
+	}
+	@if $pt-group == mobile-v-tablet {
+		@media only screen and (min-width: $v-mobile) and (max-width: $mobile) { @content }
+	}
+	@else if $pt-group == v-mobile-mobile {
+		@media only screen and (max-width: $v-mobile) { @content }
+	}
+}
+
+//
+// CLEARFIX
+//
+// Set before and after on any selector using the mixin below
+// options: @include clearfix(before); @include clearfix(after);
+
+@mixin clearfix($where) {  
+	@if $where == before {
+		&:before {
+			content: ' ';
+			display: block;
+			overflow: hidden;
+			visibility: hidden;
+			width: 0;
+			height: 0;
+		}
+	}
+	@if $where == after {
+		&:after {
+			content: ' ';
+			display: block;
+			overflow: hidden;
+			visibility: hidden;
+			width: 0;
+			height: 0;
+			clear: both;
+		}
+	}
+}
+
+
+//
+// PERCENTAGE BASED GRID
+//
+// Create colum width in id or class selectors using @include col();or using desk, tablet, v-tab, mobile
+// options: 
+		//@include col($col-count,$total-col,$gutter-width); 
+		//@include col-last($col-count,$total-col,$gutter-width); 
+		//@include col-lg($col-count,$total-col); --adds $gut-lg when configuring width and margin-right size
+		//@include col-med($col-count,$total-col); --adds $gut-med when configuring width and margin-right size
+		//@include col-sm($col-count,$total-col); --adds $gut-sm when configuring width and margin-right size
+		//@include col-no($col-count,$total-col); --adds $gut-no when configuring width and margin-right size
+		//@include col-lg-last($col-count,$total-col); --uses $gut-lg when configuring width and margin-right: 0 
+		//@include col-med-last($col-count,$total-col); --uses $gut-med when configuring width and margin-right: 0 
+		//@include col-sm-last($col-count,$total-col); --uses $gut-sm when configuring width and margin-right: 0
+
+
+@mixin multi-column {
+	display: block;
+	float: left;
+	list-style-type: none;
+	position: relative;
+	@include box-sizing();
+}
+
+@mixin multi-column-last {
+	display: block;
+	float: right;
+	list-style-type: none;
+	position: relative;
+	@include box-sizing();
+}
+
+//see _variables.scss file for gutter variables
+
+//calculates margin width using gutter space and produces justified alignment
+//should also use col-last if you want to figure out the last div
+@mixin col($col-count,$total-col,$gutter-width) {
+	width: percentage(((((100 - (($total-col - 1) * $gutter-width)) / $total-col) * $col-count) + ($gutter-width * ($col-count - 1))) / 100); 
+	margin-right: percentage($gutter-width / 100);
+	@include multi-column;
+}
+
+@mixin col-last($col-count,$total-col,$gutter-width) {
+	width: percentage(((((100 - (($total-col - 1) * $gutter-width)) / $total-col) * $col-count) + ($gutter-width * ($col-count - 1))) / 100); 
+	margin-right: percentage(0 / 100);
+	@include multi-column-last;
+}
+
+//Column Span Calculations
+//calculates width of column when spaning multiple columns using large gutter
+@mixin col-lg($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-lg)) / $total-col) * $col-count) + ($gut-lg * ($col-count - 1))) / 100); 
+	margin-right: percentage($gut-lg / 100);
+	@include multi-column;
+}
+
+//calculates width of column when spaning multiple columns using medium gutter
+@mixin col-med($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-med)) / $total-col) * $col-count) + ($gut-med * ($col-count - 1))) / 100); 
+	margin-right: percentage($gut-med / 100);
+	@include multi-column;
+}
+
+//calculates width of column when spaning multiple columns using small gutter
+@mixin col-sm($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-sm)) / $total-col) * $col-count) + ($gut-sm * ($col-count - 1))) / 100); 
+	margin-right: percentage($gut-sm / 100);
+	@include multi-column;
+}
+	
+//calculates width of column when spaning multiple columns using no gutter
+@mixin col-no($col-count,$total-col) {
+	width: percentage($col-count / $total-col); 
+	margin-right: percentage($gut-no / 100);
+	@include multi-column;
+}
+
+//calculates width of the last column when spaning multiple columns using large gutter
+@mixin col-lg-last($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-lg)) / $total-col) * $col-count) + ($gut-lg * ($col-count - 1))) / 100); 
+	margin-right: 0;
+	@include multi-column-last;
+}
+
+//calculates width of the last column when spaning multiple columns using medium gutter
+@mixin col-med-last($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-med)) / $total-col) * $col-count) + ($gut-med * ($col-count - 1))) / 100); 
+	margin-right: 0;
+	@include multi-column-last;
+}
+
+//calculates width of the last column when spaning multiple columns using small gutter
+@mixin col-sm-last($col-count,$total-col) {
+	width: percentage(((((100 - (($total-col - 1) * $gut-sm)) / $total-col) * $col-count) + ($gut-sm * ($col-count - 1))) / 100); 
+	margin-right: 0;
+	@include multi-column-last;
+}
+
+//calculates left positive movement of content and sidebars for content first ability
+@mixin push($col-count,$total-col,$gutter-width) {
+	left: percentage(((((100 - (($total-col - 1) * $gutter-width)) / $total-col) * $col-count) + ($gutter-width * ($col-count - 1)) + $gutter-width) / 100); 
+}
+
+@mixin push-lg($col-count,$total-col) {
+	left: percentage(((((100 - (($total-col - 1) * $gut-lg)) / $total-col) * $col-count) + ($gut-lg * ($col-count - 1)) + $gut-lg) / 100); 
+}
+
+@mixin push-med($col-count,$total-col) {
+	left: percentage(((((100 - (($total-col - 1) * $gut-med)) / $total-col) * $col-count) + ($gut-med * ($col-count - 1)) + $gut-med) / 100); 
+}
+
+@mixin push-sm($col-count,$total-col) {
+	left: percentage(((((100 - (($total-col - 1) * $gut-sm)) / $total-col) * $col-count) + ($gut-sm * ($col-count - 1)) + $gut-sm) / 100); 
+}
+
+//calculates left negative movement of content and sidebars for content first ability
+@mixin pull($col-count,$total-col,$gutter-width) {
+	left: -(percentage(((((100 - (($total-col - 1) * $gutter-width)) / $total-col) * $col-count) + ($gutter-width * ($col-count - 1)) + $gutter-width) / 100)); 
+}
+
+@mixin pull-lg($col-count,$total-col) {
+	left: -(percentage(((((100 - (($total-col - 1) * $gut-lg)) / $total-col) * $col-count) + ($gut-lg * ($col-count - 1)) + $gut-lg) / 100)); 
+}
+
+@mixin pull-med($col-count,$total-col) {
+	left: -(percentage(((((100 - (($total-col - 1) * $gut-med)) / $total-col) * $col-count) + ($gut-med * ($col-count - 1)) + $gut-med) / 100)); 
+}
+
+@mixin pull-sm($col-count,$total-col) {
+	left: -(percentage(((((100 - (($total-col - 1) * $gut-sm)) / $total-col) * $col-count) + ($gut-sm * ($col-count - 1)) + $gut-sm) / 100)); 
+}
+
+
+
+//Column Builder for with $gut-lg, $gut-med, $gut-sm 
+@mixin col-build($point,$total-col) {
+	@while $total-col > 1 {
+		.#{$point}-1-#{$total-col}-gut-lg { 
+			@include col-lg(1,$total-col);
+		}
+		.#{$point}-1-#{$total-col}-gut-med { 
+			@include col-med(1,$total-col);
+		}
+		.#{$point}-1-#{$total-col}-gut-sm { 
+			@include col-sm(1,$total-col);
+		}
+		.#{$point}-1-#{$total-col} { 
+			@include col-no(1,$total-col);
+		}
+		.#{$point}-1-#{$total-col}-gut-lg:nth-child(#{$total-col}n) { 
+			margin-right: 0;
+		}
+		.#{$point}-1-#{$total-col}-gut-med:nth-child(#{$total-col}n) { 
+			margin-right: 0;
+		}
+		.#{$point}-1-#{$total-col}-gut-sm:nth-child(#{$total-col}n) { 
+			margin-right: 0;
+		}
+		.#{$point}-1-#{$total-col}-gut-lg:nth-child(#{$total-col}n+1) { 
+			clear: left;
+		}
+		.#{$point}-1-#{$total-col}-gut-med:nth-child(#{$total-col}n+1) { 
+			clear: left;
+		}
+		.#{$point}-1-#{$total-col}-gut-sm:nth-child(#{$total-col}n+1) { 
+			clear: left;
+		}
+		.#{$point}-1-#{$total-col}:nth-child(#{$total-col}n+1) { 
+			clear: left;
+		}
+		$total-col: $total-col - 1;
+	}
+}
+
+
+//	Example Usage for grid()
+//	@include grid(desk,2,5);
+//	@include grid(tablet-desk,2,5);
+//	@include grid(v-tablet-tablet,2,5);
+//	@include grid(mobile-v-tablet,1,0);
+//	@include grid(v-mobile-mobile,1,0);
+
+
+@mixin grid($pt-group,$total-col,$gutter-width) {  
+	@if $pt-group == desk {
+		@media only screen and (min-width: $tablet) {
+			@include col(1,$total-col,$gutter-width);
+			&:nth-of-type(#{$total-col}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$total-col}n+1) {
+				clear: left;
+			}
+		}
+	}
+	@if $pt-group == tablet-desk {
+		@media only screen and (min-width: $v-tablet) and (max-width: $tablet) {
+			@include col(1,$total-col,$gutter-width);
+			&:nth-of-type(#{$total-col}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$total-col}n+1) {
+				clear: left;
+			}
+		}
+	}
+	@if $pt-group == v-tablet-tablet {
+		@media only screen and (min-width: $mobile) and (max-width: $v-tablet) {
+			@include col(1,$total-col,$gutter-width);
+			&:nth-of-type(#{$total-col}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$total-col}n+1) {
+				clear: left;
+			}
+		}
+	}
+	@if $pt-group == mobile-v-tablet {
+		@media only screen and (min-width: $v-mobile) and (max-width: $mobile) {
+			@include col(1,$total-col,$gutter-width);
+			&:nth-of-type(#{$total-col}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$total-col}n+1) {
+				clear: left;
+			}
+		}
+	}
+	@else if $pt-group == v-mobile-mobile {
+		@media only screen and (max-width: $v-mobile) {
+			@include col(1,$total-col,$gutter-width);
+			&:nth-of-type(#{$total-col}n) {
+				margin-right: 0;
+			}
+			&:nth-of-type(#{$total-col}n+1) {
+				clear: left;
+			}
+		}
+	}
+}
+
+
+
+
+
+@mixin col-build-spec($total-col,$gutter-width) {
+	@include col(1,$total-col,$gutter-width);
+		&:nth-of-type(#{$total-col}n) {
+			margin-right: 0;
+		}
+		&:nth-of-type(#{$total-col}n+1) {
+			clear: left;
+		}
+}
+
