@@ -1,9 +1,13 @@
-// !COLOR MIXINS
-
-
-// takes your color variables and coverts them in to rbga for opacity and generates a ie compatible transparent filter attribute.
-// options: @include trans-bg($color, $alpha); color can be a variable
-
+// !CSS Triangles
+// Using this mixin you can easily create css-only triangles. Can be absolute positioned for some useful interface elements.
+// Example usage:
+/*
+  &:before {
+    content: "";
+    display: block;
+    @include triangle(up,white,10,10);
+  }
+*/
 @mixin triangle($direction:'up', $color:'white', $width:100, $height:$width) {
 	@if $direction == 'up' {
 		width: 0; 
@@ -39,7 +43,9 @@
 	}
 }
 
-
+// !COLOR MIXINS
+// takes your color variables and coverts them in to rbga for opacity and generates a ie compatible transparent filter attribute.
+// options: @include trans-bg($color, $alpha); color can be a variable
 @mixin trans-bg($color, $alpha:1) {
 	$rgba: rgba($color, $alpha);
 	$ie-hex-str: ie-hex-str($rgba);

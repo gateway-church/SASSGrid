@@ -11,7 +11,7 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 	
 .parent-div {
 	/*
-		* Example Usage for grid() *
+		* Example Usage for grid() mixin*
 		The grid() mixin will take all children of a given parent <div>
 		and make all of its children fit into a grid system defined below.
 		It's important to define all breakpoints to avoid inheritance issues between

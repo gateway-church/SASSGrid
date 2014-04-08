@@ -10,7 +10,7 @@
 
 .parent-div {
 	/*
-		* Example Usage for grid() *
+		* Example Usage for grid() mixin*
 		The grid() mixin will take all children of a given parent <div>
 		and make all of its children fit into a grid system defined below.
 		It's important to define all breakpoints to avoid inheritance issues between
@@ -35,42 +35,37 @@
 		width: 100%;
 		float: none;
 	}
-}
-
-.col-1-2-last {
-	@include col-last(1,2,5);
-		@include break(v-tablet) {
-		width: 100%;
-		float: none;
+	
+	&:last-child {
+  	@include col-last(1,2,5);
 	}
-
+	
 }
 
 .col-2-3 {
 	@include col(2,3,5);
-		@include break(v-tablet) {
+  @include break(v-tablet) {
 		width: 100%;
 		float: none;
 	}
 
-}
-
-.col-2-3-last {
-	@include col-last(2,3,5);
-		@include break(v-tablet) {
-		width: 100%;
-		float: none;
+  &:last-child {
+  	@include col-last(2,3,5);
 	}
-
+  
 }
 
 .col-1-3 {
 	@include col(1,3,5);
-		@include break(v-tablet) {
+  @include break(v-tablet) {
 		width: 100%;
 		float: none;
 	}
-
+  
+  &:last-child {
+  	@include col-last(1,3,5);
+	}
+  
 }
 
 .col-1-3-last {
