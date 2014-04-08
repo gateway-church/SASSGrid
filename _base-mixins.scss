@@ -1,0 +1,12 @@
+@mixin box-sizing($type:border-box) {
+	-webkit-box-sizing: $type; /* content-box */
+	-moz-box-sizing: $type;
+	box-sizing: $type;
+}
+
+@mixin transitions($time:200ms) {
+	-webkit-transition:all #{$time} ease-in-out;
+		 -moz-transition:all #{$time} ease-in-out;
+		   -o-transition:all #{$time} ease-in-out;
+		      transition:all #{$time} ease-in-out;
+}

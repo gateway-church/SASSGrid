@@ -301,3 +301,31 @@ $b-radius-default: 5px; //Default value
 	background: -ms-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // IE10+
 	background: radial-gradient(ellipse at center, $inner-color 0%,$outer-color 100%); // W3C
 }
+
+@mixin perspective($length:800px) {
+  -webkit-perspective: $length;
+	-moz-perspective: $length;
+	-o-perspective: $length;
+	perspective: $length;
+}
+
+@mixin transform-style($style:preserve-3d) {
+  -webkit-transform-style: $style;
+	-moz-transform-style: $style;
+	-o-transform-style: $style;
+	transform-style: $style;
+}
+
+@mixin backface-visibility($style:hidden) {
+  -webkit-backface-visibility: $style;
+	-moz-backface-visibility: $style;
+	-o-backface-visibility: $style;
+	backface-visibility: $style;
+}
+
+@mixin transform($style) {
+  -webkit-transform: $style;
+	-moz-transform: $style;
+	-o-transform: $style;
+	transform: $style;
+}

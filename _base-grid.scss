@@ -1,4 +1,4 @@
-@import "_mixins.scss";
+@import "_base-mixins.scss";
 
 //
 // Responsive Breakpoints
@@ -42,6 +42,9 @@
 		@media only screen and (max-width: $v-mobile) { @content }
 	}
 }
+
+
+
 
 //
 // CLEARFIX
@@ -213,15 +216,28 @@
 	@while $total-col > 1 {
 		.#{$point}-1-#{$total-col}-gut-lg { 
 			@include col-lg(1,$total-col);
+			&.last {
+  			margin-right: 0;
+			}
+			
 		}
 		.#{$point}-1-#{$total-col}-gut-med { 
 			@include col-med(1,$total-col);
+			&.last {
+  			margin-right: 0;
+			}
 		}
 		.#{$point}-1-#{$total-col}-gut-sm { 
 			@include col-sm(1,$total-col);
+			&.last {
+  			margin-right: 0;
+			}
 		}
 		.#{$point}-1-#{$total-col} { 
 			@include col-no(1,$total-col);
+			&.last {
+  			margin-right: 0;
+			}
 		}
 		.#{$point}-1-#{$total-col}-gut-lg:nth-child(#{$total-col}n) { 
 			margin-right: 0;

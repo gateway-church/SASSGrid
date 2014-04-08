@@ -1,11 +1,12 @@
 /* 	This is the SCSS file where most of your
 	site-specific styling should be done.
 */
-@import "_variables.scss",
-		"reset.scss", 
-		"_base-mixins.scss",
-		"_base-grid.scss",
-		"_mixin.scss";
+@import 
+  "_variables.scss",
+	"reset.scss", 
+	"_base-mixins.scss",
+	"_base-grid.scss",
+	"_mixin.scss";
 
 
 .parent-div {
