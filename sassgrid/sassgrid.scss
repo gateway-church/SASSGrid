@@ -9,7 +9,7 @@
 // options: @include break($point);
 // 		$point options: desk, tablet, v-tablet, mobile, v-mobile
 
-@mixin break($point) {  
+@mixin break($point) {
 	@if $point == desk {
 		@media screen { @content }
 	}
@@ -45,8 +45,11 @@
 	}
 }
 
-
-
+@mixin box-sizing($type:border-box) {
+	-webkit-box-sizing: $type; // content-box
+	-moz-box-sizing: $type;
+	box-sizing: $type;
+}
 
 //
 // CLEARFIX
@@ -77,7 +80,6 @@
 		}
 	}
 }
-
 
 //
 // PERCENTAGE BASED GRID

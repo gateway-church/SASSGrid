@@ -1,7 +1,3 @@
-// !GLOBAL TYPEFACE SETTINGS
-$f-primary: 'Arial', sans-serif;
-$f-secondary: 'Trebuchet MS', cursive;
-
 // !GLOBAL RESPONSIVE VARIABLES
 $desk: 960px;
 $tablet: 960px; // This number needs to be the same as $desk to prevent a "no-mans-land" in breakpoints
@@ -17,31 +13,5 @@ $gut-sm: .1;
 $gut-med: 3;
 $gut-lg: 20;
 
-// !GLOBAL COLORS
-$black: #000;
-$red: #ff4e4e;
-$blue: #1f425b;
-$yellow: #ffd34e;
-$green: #0d474e;
-
-$dark-grey: #303030;
-$grey: #595959;
-$light-grey: #f0f0f0;
-
-$cream: #f7f0da;
-$c-primary: $yellow;
-$c-secondary: $green;
-$c-tertiary: #1a9eae;
-$c-accent: #1a9eae;
-$c-footer: #3a3332;
-$c-shadows: #9d646b;
-
-
 // !PADDING VARIABLES
-$wrap-pad: 6%; 
-
-// !BORDER RADIUS
-$b-radius: 6px;
-
-// !GENERIC SPEED VARIABLE
-$speed: 1500ms;
+$wrap-pad: 6%;

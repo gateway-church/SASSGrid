@@ -192,20 +192,11 @@
 	}
 }
 
-@mixin box-sizing($type:border-box) {
-	-webkit-box-sizing: $type; // content-box
-	-moz-box-sizing: $type;
-	box-sizing: $type;
-}
-
 @mixin opacity($opacity:.5) {
 	zoom: 1;
 	filter: alpha(opacity=$opacity*100);
 	opacity: $opacity;
 }
-
-
-$b-radius-default: 5px; //Default value
 
 @mixin border-radius($b-radius:$b-radius-default) {
 	-webkit-border-radius: $b-radius $b-radius $b-radius $b-radius;

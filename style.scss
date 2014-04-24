@@ -1,7 +1,7 @@
 /* 	This is the SCSS file where most of your
 	site-specific styling should be done.
 */
-@import "sassgrid/sassgrid.scss";
+@import "_variables.scss","sassgrid/sassgrid.scss";
 
 
 .parent-div {
