@@ -1,5 +1,7 @@
-@import "_mixins.scss";
-
+@import
+  "_variables.scss",
+	"_reset.scss",
+	"_mixin.scss";
 //
 // Responsive Breakpoints
 //
