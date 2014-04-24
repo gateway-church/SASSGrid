@@ -41,6 +41,14 @@
 		
 		border-right: #{$height}px solid $color; // determines height
 	}
+  @else if $direction == 'downComm' {
+    width: 0; 
+    height: 0; 
+    border-left: 0px solid transparent;
+    border-right: #{$width}px solid transparent;
+    
+    border-top: #{$height}px solid $color; // determines height
+  }
 }
 
 // !COLOR MIXINS
@@ -83,9 +91,9 @@
 	transition-delay: $delay;
 }
 
-@mixin outer-glow($size:10,$spread:0) {
-	-webkit-box-shadow:  0px 0px #{$size}px #{$spread}px rgba(0, 0, 0, .4);
-	box-shadow:  0px 0px #{$size}px #{$spread}px rgba(0, 0, 0, .4);
+@mixin outer-glow($size:10,$spread:0,$color:rgba(0, 0, 0, .4)) {
+  -webkit-box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};
+  box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};
 }
 
 @mixin box-shadow($x:0,$y:5,$blur:10,$color:#000) {
@@ -309,29 +317,82 @@ $b-radius-default: 5px; //Default value
 }
 
 @mixin perspective($length:800px) {
-  -webkit-perspective: $length;
-	-moz-perspective: $length;
-	-o-perspective: $length;
-	perspective: $length;
+  @include browser-prefix(perspective,#{$length});
 }
 
 @mixin transform-style($style:preserve-3d) {
-  -webkit-transform-style: $style;
-	-moz-transform-style: $style;
-	-o-transform-style: $style;
-	transform-style: $style;
+  @include browser-prefix(transform-style,#{$style});
 }
 
 @mixin backface-visibility($style:hidden) {
-  -webkit-backface-visibility: $style;
-	-moz-backface-visibility: $style;
-	-o-backface-visibility: $style;
-	backface-visibility: $style;
+  @include browser-prefix(backface-visibility,#{$style});
 }
 
 @mixin transform($style) {
-  -webkit-transform: $style;
-	-moz-transform: $style;
-	-o-transform: $style;
-	transform: $style;
+  @include browser-prefix(transform,#{$style});
+}
+
+@mixin transition-duration($style) {
+  @include browser-prefix(transition-duration,#{$style});
+}
+
+@mixin transition-property($property) {
+  @include browser-prefix(transition,#{$style});
+}
+
+@mixin browser-prefix($property, $value...) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+@mixin calendar-item-build($start-time:7,$end-time:18,$increments:15) {
+  // Creates time-based classes that can be assigned to items in a calendar
+  // cell so they're placed absolutely based on their time in the day.
+  // Classes look like: .time.start-7-00 and .time.end-9-15
+  // The $increments variable is the number of minutes you want between
+  // each class. 15-minute increments, 10-minute increments, etc.
+  .time {
+    position: absolute;
+  }
+  
+  $total_loops: ($end-time - $start-time) * ((60 / $increments) - 1);
+  $loop_counter: 0;
+  $increment_mult: (60 / $increments) - 1;
+  
+  @for $i from $start-time through $end-time {
+    @for $ii from 1 through $increment_mult {
+      $minutes: $ii * $increments;
+      @if $minutes == 1 { $minutes: '00'; }
+      $this_top: ($loop_counter / $total_loops);
+      $this_bottom: 1 - ($loop_counter / $total_loops);
+      .time.start-#{$i}-#{$minutes} {
+        top: percentage($this_top);
+      }
+      .time.end-#{$i}-#{$minutes} {
+        bottom: percentage($this_bottom);
+      }
+      $loop_counter: $loop_counter + 1;
+    }
+  }
+}
+
+@mixin placeholder {
+// Used to style the placebolder attribute for textarea and inputs
+  &::-webkit-input-placeholder {
+     @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     @content;
+  }
+
+  &:-ms-input-placeholder {  
+     @content;
+  }
 }

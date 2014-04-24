@@ -2,10 +2,10 @@
 	site-specific styling should be done.
 */
 @import 
-  "_variables.scss",
-	"_reset.scss",
-	"_base-grid.scss",
-	"_mixin.scss";
+  "sassgrid/_variables.scss",
+	"sassgrid/_reset.scss",
+	"sassgrid/_grid.scss",
+	"sassgrid/_mixin.scss";
 
 
 .parent-div {

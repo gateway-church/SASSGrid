@@ -4,11 +4,12 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 ## Sample Usage
 ```sass
 @import 
-  "_variables.scss",
-	"_reset.scss",
-	"_base-grid.scss",
-	"_mixin.scss";
-	
+  "sassgrid/_variables.scss",
+	"sassgrid/_reset.scss",
+	"sassgrid/_grid.scss",
+	"sassgrid/_mixin.scss";
+
+
 .parent-div {
 	/*
 		* Example Usage for grid() mixin*
@@ -25,6 +26,7 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 	@include grid(v-mobile-mobile,1,0);
 }
 
+
 // Sample Column Styles with responsive breakpoints
 .col-1-2 {
 	// Will be a 50% column with a 5% margin down to
@@ -35,6 +37,46 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 		width: 100%;
 		float: none;
 	}
+	
+	&:last-child {
+  	@include col-last(1,2,5);
+	}
+	
+}
+
+.col-2-3 {
+	@include col(2,3,5);
+  @include break(v-tablet) {
+		width: 100%;
+		float: none;
+	}
+
+  &:last-child {
+  	@include col-last(2,3,5);
+	}
+  
+}
+
+.col-1-3 {
+	@include col(1,3,5);
+  @include break(v-tablet) {
+		width: 100%;
+		float: none;
+	}
+  
+  &:last-child {
+  	@include col-last(1,3,5);
+	}
+  
+}
+
+.col-1-3-last {
+	@include col-last(1,3,5);
+		@include break(v-tablet) {
+		width: 100%;
+		float: none;
+	}
+
 }
 
 ```
