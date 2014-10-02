@@ -95,11 +95,11 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 	
 **Example Usage**
 ```sass
-	.element {
-		&:before {
-			@include triangle(down,white,10,10);
-		}
+.element {
+	&:before {
+		@include triangle(down,white,10,10);
 	}
+}
 ```
 
 #### @mixin trans-bg
@@ -112,9 +112,25 @@ The trans-bg mixin is a quick and easy way to generate a background color with s
 
 **Example Usage**
 ```sass
-	.element {
-		@include trans-bg(#ffffff,.5);
-	}
+.element {
+	@include trans-bg(#ffffff,.5);
+}
 ```
 
 #### @mixin gradient-trans
+Allows quick and easy creation of CSS-based gradients for the background of an element.
+
+| Argument     | Values                                                                  |
+| ---------    | --------                                                                |
+| $start_color | Any valid CSS color value                                               |
+| $start_alpha | a numeric value from 0 to 1 representing the opacity for the background |
+| $end_color   | Any valid CSS color value                                               |
+| $end_alpha   | a numeric value from 0 to 1 representing the opacity for the background |
+
+**Example Usage**
+The following style would generate a gradient that goes from fully opaque white to 20% opaque white.
+```sass
+.element {
+	@include gradient-trans(white,1,white,.2);
+}
+```
