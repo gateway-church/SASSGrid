@@ -86,12 +86,12 @@ One of the coolest parts of SASSGrid is the (ever growing) collection of helpful
 #### @mixin triangle
 The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arrows. It is commonly used inside of a &:before or &:after pseudo element in order to append a triangle to an element.
 	
-| Argument     | Values                                                                | Defaults |
-| ------------ | :-------------------------------------------------------------------- | -------- |
-| direction    | **up**, down, left, right, downComm                                   | up       |
-| color        | *(any valid CSS color value)*                                         | white    |
-| width        | a numeric value that represents the desired width of the triangle     | 100      |
-| height       | a numeric value that represents the desired height of the triangle    | $width   |
+| Argument     | Values                                                                | Defaults  |
+| ------------ | :-------------------------------------------------------------------- | :-------- |
+| direction    | **up**, down, left, right, downComm                                   | up        |
+| color        | *(any valid CSS color value)*                                         | white     |
+| width        | a numeric value that represents the desired width of the triangle     | 100       |
+| height       | a numeric value that represents the desired height of the triangle    | $width    |
 	
 **Example Usage**
 ```sass
@@ -105,10 +105,10 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 #### @mixin trans-bg
 The trans-bg mixin is a quick and easy way to generate a background color with support for alpha transparency. 
 
-| Argument  | Values                                                                  | Default |
-| --------- | :--------                                                               | ------- |
-| color     | Any valid CSS color value                                               | --      |
-| alpha     | a numeric value from 0 to 1 representing the opacity for the background | 1       |
+| Argument  | Values                                                                  | Default  |
+| --------- | :--------                                                               | :------- |
+| color     | Any valid CSS color value                                               | --       |
+| alpha     | a numeric value from 0 to 1 representing the opacity for the background | 1        |
 
 **Example Usage**
 ```sass
@@ -121,7 +121,7 @@ The trans-bg mixin is a quick and easy way to generate a background color with s
 Allows quick and easy creation of CSS-based gradients for the background of an element.
 
 | Argument    | Values                                                                  | Default           |
-| ---------   | :--------                                                               | -------           |
+| ---------   | :--------                                                               | :-------          |
 | start_color | Any valid CSS color value                                               | darken($grey,20%) |
 | start_alpha | a numeric value from 0 to 1 representing the opacity for the background | 0                 |
 | end_color   | Any valid CSS color value                                               | darken($grey,60%) |
@@ -139,7 +139,7 @@ The following style would generate a gradient that goes from fully opaque white 
 A quick shorthand mixin for adding a transition property to an element.
 
 | Argument  | Values                                                       | Default     |
-| --------  | :------                                                      | -------     |
+| --------  | :------                                                      | :-------    |
 | selector  | attribute/property to which you want to apply the transition | all         |
 | animation | the easing method to use for the transition                  | ease-in-out |
 
@@ -152,6 +152,22 @@ a { // Apply transitions to all attributes
 	&:hover {
 		background: blue;
 	}
+}
+```
+
+#### @mixin outer-glow
+Used to create a subtle outer-glow effect similar to Adobe's Photoshop
+
+| Argument | Values                                                        | Default           |
+| -------- | :------                                                       | :-------          |
+| size     | The number of pixels the glow should eminate from the element | 10                |
+| spread   | The number of pixels the glow should spread from the element  | 0                 |
+| color    | The color of the glow, any valid CSS color value              | rgba(0, 0, 0, .4) |
+
+**Example Usage**
+```sass
+.element {
+	@include outer-glow($color:red);
 }
 ```
 
