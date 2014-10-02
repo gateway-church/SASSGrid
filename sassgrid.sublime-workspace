@@ -1,0 +1,907 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"auto",
+				"autoclick"
+			],
+			[
+				"click",
+				"clickTab"
+			],
+			[
+				"act",
+				"activateTab"
+			],
+			[
+				"tabset-",
+				"tabset-tabs"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"impo",
+				"important"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"font-st",
+				"font-style"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"abs",
+				"absolute"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "// !CSS Triangles\n// Using this mixin you can easily create css-only triangles. Can be absolute positioned for some useful interface elements.\n// Example usage:\n/*\n  &:before {\n    content: \"\";\n    display: block;\n    @include triangle(up,white,10,10);\n  }\n*/\n@mixin triangle($direction:'up', $color:'white', $width:100, $height:$width) {\n	@if $direction == 'up' {\n		width: 0; \n		height: 0; \n		border-left: #{$width}px solid transparent;\n		border-right: #{$width}px solid transparent;\n		\n		border-bottom: #{$height}px solid $color; // determines height\n	\n	} @else if $direction == 'down' {\n		width: 0; \n		height: 0; \n		border-left: #{$width}px solid transparent;\n		border-right: #{$width}px solid transparent;\n		\n		border-top: #{$height}px solid $color; // determines height\n		\n	} @else if $direction == 'right' {\n		width: 0; \n		height: 0; \n		border-top: #{$width}px solid transparent;\n		border-bottom: #{$width}px solid transparent;\n		\n		border-left: #{$height}px solid $color; // determines height\n		\n	} @else if $direction == 'left' {\n		width: 0; \n		height: 0; \n		border-top: #{$width}px solid transparent;\n		border-bottom: #{$width}px solid transparent;\n		\n		border-right: #{$height}px solid $color; // determines height\n	}\n  @else if $direction == 'downComm' {\n    width: 0; \n    height: 0; \n    border-left: 0px solid transparent;\n    border-right: #{$width}px solid transparent;\n    \n    border-top: #{$height}px solid $color; // determines height\n  }\n}\n\n// !COLOR MIXINS\n// takes your color variables and coverts them in to rbga for opacity and generates a ie compatible transparent filter attribute.\n// options: @include trans-bg($color, $alpha); color can be a variable\n@mixin trans-bg($color, $alpha:1) {\n	$rgba: rgba($color, $alpha);\n	$ie-hex-str: ie-hex-str($rgba);\n	background-color: $rgba;\n	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});\n}\n\n@mixin gradient-trans($start_color:darken($grey,20%),$start_alpha:0,$end_color:darken($grey,60%),$end_alpha:.5) {\n  	$rgba_start: rgba($start_color,$start_alpha);\n  	$rgba_end: rgba($end_color,$end_alpha);\n	background: $start_color; // Old browsers\n	background: -moz-linear-gradient(top, $rgba_start 0%, $rgba_end 100%); // FF3.6+\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$rgba_end)); // Chrome,Safari4+\n	background: -webkit-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // Chrome10+,Safari5.1+\n	background: -o-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // Opera 11.10+\n	background: -ms-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // IE10+\n	background: linear-gradient(to bottom, $rgba_start 0%,$rgba_end 100%); // W3C\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$rgba_start}', endColorstr='#{$rgba_end}',GradientType=0 ); // IE6-9\n}\n\n@mixin noselect() {\n	-webkit-touch-callout: none;\n	-webkit-user-select: none;\n	-khtml-user-select: none;\n	-moz-user-select: none;\n	-ms-user-select: none;\n	user-select: none;\n}\n\n@mixin transitions($selector:all, $animation:ease-in-out, $duration:.2s, $delay:0) {\n	-webkit-transition:$selector $animation $duration;\n	-moz-transition:$selector $animation $duration;\n	-o-transition:$selector $animation $duration;\n	transition:$selector $animation $duration;\n	transition-delay: $delay;\n}\n\n@mixin outer-glow($size:10,$spread:0,$color:rgba(0, 0, 0, .4)) {\n  -webkit-box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};\n  box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};\n}\n\n@mixin box-shadow($x:0,$y:5,$blur:10,$color:#000) {\n	-webkit-box-shadow: #{$x}px #{$y}px #{$blur}px $color;\n	-moz-box-shadow: #{$x}px #{$y}px #{$blur}px $color;\n	box-shadow: #{$x}px #{$y}px #{$blur}px $color;\n}\n\n@mixin b-shadow-inset($x:0,$y:-1px,$blur:1,$color:rgba(0,0,0,0.5)) {\n	-webkit-box-shadow: inset $x $y $blur $color;\n	-moz-box-shadow: inset $x $y $blur $color;\n	box-shadow: inset $x $y $blur $color;\n}\n\n@mixin inset_box_shadow($shadow_x:3px, $shadow_y:3px, $shadow_rad:3px, $shadow_in:3px, $shadow_color:#888) {\n	box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;\n	-webkit-box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;\n	-moz-box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;\n}\n\n@mixin b-shadow-inset-left-right () {\n	box-shadow: inset 10px 0 10px -4px rgba(0, 0, 0, 0.1), \n				inset -10px 0 10px -4px rgba(0, 0, 0, 0.1);\n}\n\n@mixin bevel($size:1,$strength:.3,$reverse:false) {\n	$x: 0; \n	$y: $size; \n	$blur: 0;\n	@if $reverse == false {\n		-webkit-box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), \n							inset $x #{$y}px $blur rgba(255,255,255,$strength*2);\n		-moz-box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), \n						 inset $x #{$y}px $blur rgba(255,255,255,$strength*2);\n		box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), \n					inset $x #{$y}px $blur rgba(255,255,255,$strength*2);\n		\n		border-left: 1px solid rgba(255,255,255,$strength*2);\n		border-right: 1px solid rgba(0,0,0,$strength);\n		\n	}\n	@else {\n		-webkit-box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), \n							inset $x #{$y}px $blur rgba(0,0,0,$strength);\n		-moz-box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), \n							inset $x #{$y}px $blur rgba(0,0,0,$strength);\n		box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), \n							inset $x #{$y}px $blur rgba(0,0,0,$strength);\n							\n		border-right: 1px solid rgba(255,255,255,$strength*2);\n		border-left: 1px solid rgba(0,0,0,$strength);\n\n	}\n}\n\n@mixin gradient($start_color,$end_color) {\n	background: $start_color; // Old browsers\n	background: -moz-linear-gradient(top, $start_color 0%, $end_color 100%); // FF3.6+\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$end_color)); // Chrome,Safari4+\n	background: -webkit-linear-gradient(top, $start_color 0%,$end_color 100%); // Chrome10+,Safari5.1+\n	background: -o-linear-gradient(top, $start_color 0%,$end_color 100%); // Opera 11.10+\n	background: -ms-linear-gradient(top, $start_color 0%,$end_color 100%); // IE10+\n	background: linear-gradient(to bottom, $start_color 0%,$end_color 100%); // W3C\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start_color}', endColorstr='#{$end_color}',GradientType=0 ); // IE6-9\n}\n\n@mixin border-radius($tl:3px,$tr:3px,$br:3px,$bl:3px) {\n	-moz-border-radius: $tl $tr $br $bl;\n	-webkit-border-radius: $tl $tr $br $bl;\n	border-radius: $tl $tr $br $bl;\n}\n\n@mixin multi-col-text($col,$gap) {\n	-moz-column-count: $col;\n	-moz-column-gap: $gap;\n	-webkit-column-count: $col;\n	-webkit-column-gap: $gap;\n	column-count: $col;\n	column-gap: $gap;\n}\n\n@mixin grayscale($amount) {  \n	@if $amount == 100 {\n		filter: url(\"data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\'><filter id=\\'grayscale\\'><feColorMatrix type=\\'matrix\\' values=\\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\\'/></filter></svg>#grayscale\"); // Firefox 3.5+\n		-webkit-filter:grayscale(100%);\n		   -moz-filter:grayscale(100%);\n		     -o-filter:grayscale(100%);\n		        filter:grayscale(100%);\n	}\n	@else if $amount == 0 {\n		-webkit-filter:grayscale(0%);\n	   -moz-filter:grayscale(0%);\n	     -o-filter:grayscale(0%);\n	        filter:grayscale(0%);\n	        filter: none;\n	}\n}\n\n@mixin box-sizing($type:border-box) {\n	-webkit-box-sizing: $type; // content-box\n	-moz-box-sizing: $type;\n	box-sizing: $type;\n}\n\n@mixin opacity($opacity:.5) {\n	zoom: 1;\n	filter: alpha(opacity=$opacity*100);\n	opacity: $opacity;\n}\n\n\n$b-radius-default: 5px; //Default value\n\n@mixin border-radius($b-radius:$b-radius-default) {\n	-webkit-border-radius: $b-radius $b-radius $b-radius $b-radius;\n	-moz-border-radius: $b-radius $b-radius $b-radius $b-radius;\n	-khtml-border-radius:$b-radius $b-radius $b-radius $b-radius;\n	border-radius:$b-radius $b-radius $b-radius $b-radius;\n}\n\n@mixin border-top-radius($b-radius:$b-radius-default) {\n	-webkit-border-top-right-radius: $b-radius;\n	-webkit-border-top-left-radius: $b-radius;\n	-moz-border-top-right-radius: $b-radius;\n	-moz-border-top-left-radius: $b-radius;\n	-khtml-border-top-right-radius:$b-radius;\n	-khtml-border-top-left-radius:$b-radius;\n	border-top-right-radius:$b-radius;\n	border-top-left-radius:$b-radius;\n}\n\n@mixin border-bottom-radius($b-radius:$b-radius-default) {\n	-webkit-border-bottom-right-radius: $b-radius;\n	-webkit-border-bottom-left-radius: $b-radius;\n	-moz-border-bottom-right-radius: $b-radius;\n	-moz-border-bottom-left-radius: $b-radius;\n	-khtml-border-bottom-right-radius:$b-radius;\n	-khtml-border-bottom-left-radius:$b-radius;\n	border-bottom-right-radius:$b-radius;\n	border-bottom-left-radius:$b-radius;\n}\n\n@mixin border-left-radius($b-radius:$b-radius-default) {\n	-webkit-border-bottom-left-radius: $b-radius;\n	-moz-border-bottom-left-radius: $b-radius;\n	-khtml-border-bottom-left-radius:$b-radius;\n	border-bottom-left-radius:$b-radius;\n	-webkit-border-top-left-radius: $b-radius;\n	-moz-border-top-left-radius: $b-radius;\n	-khtml-border-top-left-radius:$b-radius;\n	border-top-left-radius:$b-radius;\n}\n\n@mixin border-right-radius($b-radius:$b-radius-default) {\n	-webkit-border-top-right-radius: $b-radius;\n	-moz-border-top-right-radius: $b-radius;\n	-khtml-border-top-right-radius:$b-radius;\n	border-top-right-radius:$b-radius;\n	-webkit-border-bottom-right-radius: $b-radius;\n	-moz-border-bottom-right-radius: $b-radius;\n	-khtml-border-bottom-right-radius:$b-radius;\n	border-bottom-right-radius:$b-radius;\n}\n\n\n@mixin border-top-left-radius($b-radius:$b-radius-default) {\n	-webkit-border-top-left-radius: $b-radius;\n	-moz-border-top-left-radius: $b-radius;\n	-khtml-border-top-left-radius:$b-radius;\n	border-top-left-radius:$b-radius;\n}\n\n@mixin border-bottom-left-radius($b-radius:$b-radius-default) {\n	-webkit-border-bottom-left-radius: $b-radius;\n	-moz-border-bottom-left-radius: $b-radius;\n	-khtml-border-bottom-left-radius:$b-radius;\n	border-bottom-left-radius:$b-radius;\n}\n\n@mixin border-top-right-radius($b-radius:$b-radius-default) {\n	-webkit-border-top-right-radius: $b-radius;\n	-moz-border-top-right-radius: $b-radius;\n	-khtml-border-top-right-radius:$b-radius;\n	border-top-right-radius:$b-radius;\n}\n\n@mixin border-bottom-right-radius($b-radius:$b-radius-default) {\n	-webkit-border-bottom-right-radius: $b-radius;\n	-moz-border-bottom-right-radius: $b-radius;\n	-khtml-border-bottom-right-radius:$b-radius;\n	border-bottom-right-radius:$b-radius;\n}\n\n@mixin darkorlighttextshadow( $a, $opacity: 0.8 ) {\n    @if lightness( $a ) >= 65% {\n        @include text_shadow( 0, -1px, 0, rgba(0, 0, 0, $opacity) );\n    } @else {\n        @include text_shadow( 0, 1px, 0, rgba(255, 255, 255, $opacity) );\n    }\n}\n\n@mixin text_shadow($shadow_x:3px, $shadow_y:3px, $shadow_rad:3px, $shadow_color:#fff) {\n	text-shadow:$shadow_x $shadow_y $shadow_rad $shadow_color;\n}\n\n@mixin vertical_gradient($from: #000, $to: #FFF) {\n	background: $from;\n	background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));\n	background: -webkit-linear-gradient($from, $to);\n	background: -moz-linear-gradient(center top, $from 0%, $to 100%);\n	background: -moz-gradient(center top, $from 0%, $to 100%);\n}\n@mixin radial_gradient($inner-color: #000, $outer-color: #FFF) {\n	background: $inner-color;\n	background: -moz-radial-gradient(center, ellipse cover, $inner-color 0%, $outer-color 100%); // FF3.6+\n	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$inner-color), color-stop(100%,$outer-color)); // Chrome,Safari4+\n	background: -webkit-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // Chrome10+,Safari5.1+\n	background: -o-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // Opera 12+\n	background: -ms-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // IE10+\n	background: radial-gradient(ellipse at center, $inner-color 0%,$outer-color 100%); // W3C\n}\n\n@mixin perspective($length:800px) {\n  @include browser-prefix(perspective,#{$length});\n}\n\n@mixin transform-style($style:preserve-3d) {\n  @include browser-prefix(transform-style,#{$style});\n}\n\n@mixin backface-visibility($style:hidden) {\n  @include browser-prefix(backface-visibility,#{$style});\n}\n\n@mixin transform($style) {\n  @include browser-prefix(transform,#{$style});\n}\n\n@mixin transition-duration($style) {\n  @include browser-prefix(transition-duration,#{$style});\n}\n\n@mixin transition-property($property) {\n  @include browser-prefix(transition,#{$style});\n}\n\n@mixin browser-prefix($property, $value...) {\n  -webkit-#{$property}: $value;\n  -moz-#{$property}: $value;\n  -o-#{$property}: $value;\n  #{$property}: $value;\n}\n\n@mixin calendar-item-build($start-time:7,$end-time:18,$increments:15) {\n  // Creates time-based classes that can be assigned to items in a calendar\n  // cell so they're placed absolutely based on their time in the day.\n  // Classes look like: .time.start-7-00 and .time.end-9-15\n  // The $increments variable is the number of minutes you want between\n  // each class. 15-minute increments, 10-minute increments, etc.\n  .time {\n    position: absolute;\n  }\n  \n  $total_loops: ($end-time - $start-time) * ((60 / $increments) - 1);\n  $loop_counter: 0;\n  $increment_mult: (60 / $increments) - 1;\n  \n  @for $i from $start-time through $end-time {\n    @for $ii from 1 through $increment_mult {\n      $minutes: $ii * $increments;\n      @if $minutes == 1 { $minutes: '00'; }\n      $this_top: ($loop_counter / $total_loops);\n      $this_bottom: 1 - ($loop_counter / $total_loops);\n      .time.start-#{$i}-#{$minutes} {\n        top: percentage($this_top);\n      }\n      .time.end-#{$i}-#{$minutes} {\n        bottom: percentage($this_bottom);\n      }\n      $loop_counter: $loop_counter + 1;\n    }\n  }\n}\n\n@mixin placeholder {\n// Used to style the placebolder attribute for textarea and inputs\n  &::-webkit-input-placeholder {\n     @content;\n  }\n\n  &:-moz-placeholder { /* Firefox 18- */\n     @content;\n  }\n\n  &::-moz-placeholder {  /* Firefox 19+ */\n     @content;\n  }\n\n  &:-ms-input-placeholder {  \n     @content;\n  }\n}",
+			"file": "_mixin.scss",
+			"file_size": 14142,
+			"file_write_time": 1398362090000000,
+			"settings":
+			{
+				"buffer_size": 14142,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sassgrid/_variables.scss",
+			"settings":
+			{
+				"buffer_size": 410,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_variables.scss",
+			"settings":
+			{
+				"buffer_size": 482,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"selected_items":
+		[
+			[
+				"fetch",
+				"Fetch: Package"
+			],
+			[
+				"fetc",
+				"Fetch: Manage"
+			],
+			[
+				"Fetch",
+				"Fetch: Manage"
+			],
+			[
+				"gist",
+				"Gist: Rename File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"syntaxsass",
+				"Set Syntax: Sass"
+			],
+			[
+				"syntax jq",
+				"Set Syntax: jQuery (JavaScript)"
+			],
+			[
+				"syntax java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syntax php",
+				"Set Syntax: PHP"
+			],
+			[
+				"syntax html",
+				"Set Syntax: HTML"
+			],
+			[
+				"bh",
+				"BracketHighlighter: Toggle Global Enable"
+			],
+			[
+				"snippet: html",
+				"Snippet: font-weight:normal"
+			],
+			[
+				"syntax coff",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"syntax sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Channel"
+			],
+			[
+				"",
+				"Preferences: Browse Packages"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/sassgrid/sassgrid.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/style.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/sassgrid/_mixin.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/sassgrid/_grid.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/.gitignore",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/_base-grid.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/_base-mixins.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/SASS Grid/_mixin.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Muncie Visitors Bureau/markup/styles/scss/_mixin.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/styles.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/students/questionnaire.css.sass",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/Gist/Gist.sublime-settings",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/AdvancedNewFile/Default (OSX).sublime-keymap",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/Terminal/Default (OSX).sublime-keymap",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/Terminal/Terminal.sublime-settings",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/views/staff/school_periods/edit.html.haml",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/views/staff/school_periods/days_off.html.haml",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/student_binders/main.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/config/routes.rb",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/controllers/staff/days_off_controller.rb",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/views/staff/days_off/show.html.haml",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/staff/school_periods.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/staff/days_off.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/javascripts/staff/day_off.js.coffee",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/staff/student_binders.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/staff/main.css.sass",
+		"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/tmp/cache/assets/development/sass/9175c8526dbc1c674084e10b0c4f4d45b02cceae/days_off.css.sassc",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/css/_mixin.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/bower_components/fontawesome/scss/_variables.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/bower_components/fontawesome/scss/_icons.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/bower_components/fontawesome/scss/_core.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/bower_components/fontawesome/scss/font-awesome.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Marion/markup/css/font-awesome/scss/_icons.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Marion/markup/css/styles.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/css/_variables.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/css/site-id.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/css/_navigation.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/js/min/main-ck.js",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/template.php",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/js/jquery.parallax-1.1.3.js",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Muncie Visitors Bureau/markup/styles/scss/_home.scss",
+		"/Users/evanagee/Dropbox/Development/Projects/gateway1/docroot/sites/gwayconf/themes/gwayconf2014/css/test.coffee",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/evanagee/Library/Application Support/Sublime Text 2/Packages/User/Sass.sublime-settings",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Muncie Visitors Bureau/markup/index.php",
+		"/Users/evanagee/Dropbox/Development/Projects/CS Kern/Muncie Visitors Bureau/markup/js/main.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets",
+			"/Users/evanagee/Dropbox/Development/Projects/Bethel/dragonfly/app/assets/stylesheets/staff"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sassgrid/",
+			".controls",
+			"min-height: 49px;",
+			".controls",
+			"min-height",
+			"min-height: 49px;",
+			"calendar",
+			"calenar",
+			"calendar",
+			"gateway",
+			"{",
+			"::before {",
+			"envelope",
+			"::before",
+			"vimeo",
+			"twitter",
+			"Awesome",
+			"social",
+			".app",
+			"triangle",
+			"menu-name-menu-secondary-menu",
+			"content-footer-full-bg",
+			"clearfix",
+			".view-ministry-partner",
+			"home",
+			":after",
+			"postscript-top-full-bg",
+			"url",
+			"content_postscript",
+			"memory",
+			"$f-secon",
+			"fold",
+			"},\n",
+			"fold",
+			"#main-nav",
+			"#sub-nav",
+			"floating"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "_mixin.scss",
+					"settings":
+					{
+						"buffer_size": 14142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6781,
+								6781
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 3.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sassgrid/_variables.scss",
+					"settings":
+					{
+						"buffer_size": 410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_variables.scss",
+					"settings":
+					{
+						"buffer_size": 482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								482,
+								482
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.53642124613,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"days_off",
+				"app/controllers/staff/days_off_controller.rb"
+			],
+			[
+				"days",
+				"app/views/staff/school_periods/days_off.html.haml"
+			],
+			[
+				"mix",
+				"css/_mixin.scss"
+			],
+			[
+				"vari",
+				"css/_variables.scss"
+			],
+			[
+				"views-view-fields--ministry-partner.tpl.php",
+				"templates/views/views-view-fields--ministry-partner.tpl.php"
+			],
+			[
+				"main-ck",
+				"js/min/main-ck.js"
+			],
+			[
+				"tem",
+				"template.php"
+			],
+			[
+				"parallax",
+				"js/jquery.parallax-1.1.3.js"
+			],
+			[
+				".js",
+				"js/main.js"
+			],
+			[
+				"_var",
+				"css/_variables.scss"
+			],
+			[
+				"mixin",
+				"css/_mixin.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true
+}
