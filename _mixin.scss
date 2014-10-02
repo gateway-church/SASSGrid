@@ -1,0 +1,398 @@
+// !CSS Triangles
+// Using this mixin you can easily create css-only triangles. Can be absolute positioned for some useful interface elements.
+// Example usage:
+/*
+  &:before {
+    content: "";
+    display: block;
+    @include triangle(up,white,10,10);
+  }
+*/
+@mixin triangle($direction:'up', $color:'white', $width:100, $height:$width) {
+	@if $direction == 'up' {
+		width: 0; 
+		height: 0; 
+		border-left: #{$width}px solid transparent;
+		border-right: #{$width}px solid transparent;
+		
+		border-bottom: #{$height}px solid $color; // determines height
+	
+	} @else if $direction == 'down' {
+		width: 0; 
+		height: 0; 
+		border-left: #{$width}px solid transparent;
+		border-right: #{$width}px solid transparent;
+		
+		border-top: #{$height}px solid $color; // determines height
+		
+	} @else if $direction == 'right' {
+		width: 0; 
+		height: 0; 
+		border-top: #{$width}px solid transparent;
+		border-bottom: #{$width}px solid transparent;
+		
+		border-left: #{$height}px solid $color; // determines height
+		
+	} @else if $direction == 'left' {
+		width: 0; 
+		height: 0; 
+		border-top: #{$width}px solid transparent;
+		border-bottom: #{$width}px solid transparent;
+		
+		border-right: #{$height}px solid $color; // determines height
+	}
+  @else if $direction == 'downComm' {
+    width: 0; 
+    height: 0; 
+    border-left: 0px solid transparent;
+    border-right: #{$width}px solid transparent;
+    
+    border-top: #{$height}px solid $color; // determines height
+  }
+}
+
+// !COLOR MIXINS
+// takes your color variables and coverts them in to rbga for opacity and generates a ie compatible transparent filter attribute.
+// options: @include trans-bg($color, $alpha); color can be a variable
+@mixin trans-bg($color, $alpha:1) {
+	$rgba: rgba($color, $alpha);
+	$ie-hex-str: ie-hex-str($rgba);
+	background-color: $rgba;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+@mixin gradient-trans($start_color:darken($grey,20%),$start_alpha:0,$end_color:darken($grey,60%),$end_alpha:.5) {
+  	$rgba_start: rgba($start_color,$start_alpha);
+  	$rgba_end: rgba($end_color,$end_alpha);
+	background: $start_color; // Old browsers
+	background: -moz-linear-gradient(top, $rgba_start 0%, $rgba_end 100%); // FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$rgba_end)); // Chrome,Safari4+
+	background: -webkit-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // Opera 11.10+
+	background: -ms-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); // IE10+
+	background: linear-gradient(to bottom, $rgba_start 0%,$rgba_end 100%); // W3C
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$rgba_start}', endColorstr='#{$rgba_end}',GradientType=0 ); // IE6-9
+}
+
+@mixin noselect() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin transitions($selector:all, $animation:ease-in-out, $duration:.2s, $delay:0) {
+	-webkit-transition:$selector $animation $duration;
+	-moz-transition:$selector $animation $duration;
+	-o-transition:$selector $animation $duration;
+	transition:$selector $animation $duration;
+	transition-delay: $delay;
+}
+
+@mixin outer-glow($size:10,$spread:0,$color:rgba(0, 0, 0, .4)) {
+  -webkit-box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};
+  box-shadow:  0px 0px #{$size}px #{$spread}px #{$color};
+}
+
+@mixin box-shadow($x:0,$y:5,$blur:10,$color:#000) {
+	-webkit-box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+	-moz-box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+	box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+}
+
+@mixin b-shadow-inset($x:0,$y:-1px,$blur:1,$color:rgba(0,0,0,0.5)) {
+	-webkit-box-shadow: inset $x $y $blur $color;
+	-moz-box-shadow: inset $x $y $blur $color;
+	box-shadow: inset $x $y $blur $color;
+}
+
+@mixin inset_box_shadow($shadow_x:3px, $shadow_y:3px, $shadow_rad:3px, $shadow_in:3px, $shadow_color:#888) {
+	box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+	-webkit-box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+	-moz-box-shadow:inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+}
+
+@mixin b-shadow-inset-left-right () {
+	box-shadow: inset 10px 0 10px -4px rgba(0, 0, 0, 0.1), 
+				inset -10px 0 10px -4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin bevel($size:1,$strength:.3,$reverse:false) {
+	$x: 0; 
+	$y: $size; 
+	$blur: 0;
+	@if $reverse == false {
+		-webkit-box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), 
+							inset $x #{$y}px $blur rgba(255,255,255,$strength*2);
+		-moz-box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), 
+						 inset $x #{$y}px $blur rgba(255,255,255,$strength*2);
+		box-shadow: inset $x #{-$y}px $blur rgba(0,0,0,$strength), 
+					inset $x #{$y}px $blur rgba(255,255,255,$strength*2);
+		
+		border-left: 1px solid rgba(255,255,255,$strength*2);
+		border-right: 1px solid rgba(0,0,0,$strength);
+		
+	}
+	@else {
+		-webkit-box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), 
+							inset $x #{$y}px $blur rgba(0,0,0,$strength);
+		-moz-box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), 
+							inset $x #{$y}px $blur rgba(0,0,0,$strength);
+		box-shadow: inset $x #{-$y}px $blur rgba(255,255,255,$strength*2), 
+							inset $x #{$y}px $blur rgba(0,0,0,$strength);
+							
+		border-right: 1px solid rgba(255,255,255,$strength*2);
+		border-left: 1px solid rgba(0,0,0,$strength);
+
+	}
+}
+
+@mixin gradient($start_color,$end_color) {
+	background: $start_color; // Old browsers
+	background: -moz-linear-gradient(top, $start_color 0%, $end_color 100%); // FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$end_color)); // Chrome,Safari4+
+	background: -webkit-linear-gradient(top, $start_color 0%,$end_color 100%); // Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top, $start_color 0%,$end_color 100%); // Opera 11.10+
+	background: -ms-linear-gradient(top, $start_color 0%,$end_color 100%); // IE10+
+	background: linear-gradient(to bottom, $start_color 0%,$end_color 100%); // W3C
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start_color}', endColorstr='#{$end_color}',GradientType=0 ); // IE6-9
+}
+
+@mixin border-radius($tl:3px,$tr:3px,$br:3px,$bl:3px) {
+	-moz-border-radius: $tl $tr $br $bl;
+	-webkit-border-radius: $tl $tr $br $bl;
+	border-radius: $tl $tr $br $bl;
+}
+
+@mixin multi-col-text($col,$gap) {
+	-moz-column-count: $col;
+	-moz-column-gap: $gap;
+	-webkit-column-count: $col;
+	-webkit-column-gap: $gap;
+	column-count: $col;
+	column-gap: $gap;
+}
+
+@mixin grayscale($amount) {  
+	@if $amount == 100 {
+		filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); // Firefox 3.5+
+		-webkit-filter:grayscale(100%);
+		   -moz-filter:grayscale(100%);
+		     -o-filter:grayscale(100%);
+		        filter:grayscale(100%);
+	}
+	@else if $amount == 0 {
+		-webkit-filter:grayscale(0%);
+	   -moz-filter:grayscale(0%);
+	     -o-filter:grayscale(0%);
+	        filter:grayscale(0%);
+	        filter: none;
+	}
+}
+
+@mixin box-sizing($type:border-box) {
+	-webkit-box-sizing: $type; // content-box
+	-moz-box-sizing: $type;
+	box-sizing: $type;
+}
+
+@mixin opacity($opacity:.5) {
+	zoom: 1;
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
+}
+
+
+$b-radius-default: 5px; //Default value
+
+@mixin border-radius($b-radius:$b-radius-default) {
+	-webkit-border-radius: $b-radius $b-radius $b-radius $b-radius;
+	-moz-border-radius: $b-radius $b-radius $b-radius $b-radius;
+	-khtml-border-radius:$b-radius $b-radius $b-radius $b-radius;
+	border-radius:$b-radius $b-radius $b-radius $b-radius;
+}
+
+@mixin border-top-radius($b-radius:$b-radius-default) {
+	-webkit-border-top-right-radius: $b-radius;
+	-webkit-border-top-left-radius: $b-radius;
+	-moz-border-top-right-radius: $b-radius;
+	-moz-border-top-left-radius: $b-radius;
+	-khtml-border-top-right-radius:$b-radius;
+	-khtml-border-top-left-radius:$b-radius;
+	border-top-right-radius:$b-radius;
+	border-top-left-radius:$b-radius;
+}
+
+@mixin border-bottom-radius($b-radius:$b-radius-default) {
+	-webkit-border-bottom-right-radius: $b-radius;
+	-webkit-border-bottom-left-radius: $b-radius;
+	-moz-border-bottom-right-radius: $b-radius;
+	-moz-border-bottom-left-radius: $b-radius;
+	-khtml-border-bottom-right-radius:$b-radius;
+	-khtml-border-bottom-left-radius:$b-radius;
+	border-bottom-right-radius:$b-radius;
+	border-bottom-left-radius:$b-radius;
+}
+
+@mixin border-left-radius($b-radius:$b-radius-default) {
+	-webkit-border-bottom-left-radius: $b-radius;
+	-moz-border-bottom-left-radius: $b-radius;
+	-khtml-border-bottom-left-radius:$b-radius;
+	border-bottom-left-radius:$b-radius;
+	-webkit-border-top-left-radius: $b-radius;
+	-moz-border-top-left-radius: $b-radius;
+	-khtml-border-top-left-radius:$b-radius;
+	border-top-left-radius:$b-radius;
+}
+
+@mixin border-right-radius($b-radius:$b-radius-default) {
+	-webkit-border-top-right-radius: $b-radius;
+	-moz-border-top-right-radius: $b-radius;
+	-khtml-border-top-right-radius:$b-radius;
+	border-top-right-radius:$b-radius;
+	-webkit-border-bottom-right-radius: $b-radius;
+	-moz-border-bottom-right-radius: $b-radius;
+	-khtml-border-bottom-right-radius:$b-radius;
+	border-bottom-right-radius:$b-radius;
+}
+
+
+@mixin border-top-left-radius($b-radius:$b-radius-default) {
+	-webkit-border-top-left-radius: $b-radius;
+	-moz-border-top-left-radius: $b-radius;
+	-khtml-border-top-left-radius:$b-radius;
+	border-top-left-radius:$b-radius;
+}
+
+@mixin border-bottom-left-radius($b-radius:$b-radius-default) {
+	-webkit-border-bottom-left-radius: $b-radius;
+	-moz-border-bottom-left-radius: $b-radius;
+	-khtml-border-bottom-left-radius:$b-radius;
+	border-bottom-left-radius:$b-radius;
+}
+
+@mixin border-top-right-radius($b-radius:$b-radius-default) {
+	-webkit-border-top-right-radius: $b-radius;
+	-moz-border-top-right-radius: $b-radius;
+	-khtml-border-top-right-radius:$b-radius;
+	border-top-right-radius:$b-radius;
+}
+
+@mixin border-bottom-right-radius($b-radius:$b-radius-default) {
+	-webkit-border-bottom-right-radius: $b-radius;
+	-moz-border-bottom-right-radius: $b-radius;
+	-khtml-border-bottom-right-radius:$b-radius;
+	border-bottom-right-radius:$b-radius;
+}
+
+@mixin darkorlighttextshadow( $a, $opacity: 0.8 ) {
+    @if lightness( $a ) >= 65% {
+        @include text_shadow( 0, -1px, 0, rgba(0, 0, 0, $opacity) );
+    } @else {
+        @include text_shadow( 0, 1px, 0, rgba(255, 255, 255, $opacity) );
+    }
+}
+
+@mixin text_shadow($shadow_x:3px, $shadow_y:3px, $shadow_rad:3px, $shadow_color:#fff) {
+	text-shadow:$shadow_x $shadow_y $shadow_rad $shadow_color;
+}
+
+@mixin vertical_gradient($from: #000, $to: #FFF) {
+	background: $from;
+	background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background: -webkit-linear-gradient($from, $to);
+	background: -moz-linear-gradient(center top, $from 0%, $to 100%);
+	background: -moz-gradient(center top, $from 0%, $to 100%);
+}
+@mixin radial_gradient($inner-color: #000, $outer-color: #FFF) {
+	background: $inner-color;
+	background: -moz-radial-gradient(center, ellipse cover, $inner-color 0%, $outer-color 100%); // FF3.6+
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$inner-color), color-stop(100%,$outer-color)); // Chrome,Safari4+
+	background: -webkit-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // Chrome10+,Safari5.1+
+	background: -o-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // Opera 12+
+	background: -ms-radial-gradient(center, ellipse cover, $inner-color 0%,$outer-color 100%); // IE10+
+	background: radial-gradient(ellipse at center, $inner-color 0%,$outer-color 100%); // W3C
+}
+
+@mixin perspective($length:800px) {
+  @include browser-prefix(perspective,#{$length});
+}
+
+@mixin transform-style($style:preserve-3d) {
+  @include browser-prefix(transform-style,#{$style});
+}
+
+@mixin backface-visibility($style:hidden) {
+  @include browser-prefix(backface-visibility,#{$style});
+}
+
+@mixin transform($style) {
+  @include browser-prefix(transform,#{$style});
+}
+
+@mixin transition-duration($style) {
+  @include browser-prefix(transition-duration,#{$style});
+}
+
+@mixin transition-property($property) {
+  @include browser-prefix(transition,#{$style});
+}
+
+@mixin browser-prefix($property, $value...) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+@mixin calendar-item-build($start-time:7,$end-time:18,$increments:15) {
+  // Creates time-based classes that can be assigned to items in a calendar
+  // cell so they're placed absolutely based on their time in the day.
+  // Classes look like: .time.start-7-00 and .time.end-9-15
+  // The $increments variable is the number of minutes you want between
+  // each class. 15-minute increments, 10-minute increments, etc.
+  .time {
+    position: absolute;
+  }
+  
+  $total_loops: ($end-time - $start-time) * ((60 / $increments) - 1);
+  $loop_counter: 0;
+  $increment_mult: (60 / $increments) - 1;
+  
+  @for $i from $start-time through $end-time {
+    @for $ii from 1 through $increment_mult {
+      $minutes: $ii * $increments;
+      @if $minutes == 1 { $minutes: '00'; }
+      $this_top: ($loop_counter / $total_loops);
+      $this_bottom: 1 - ($loop_counter / $total_loops);
+      .time.start-#{$i}-#{$minutes} {
+        top: percentage($this_top);
+      }
+      .time.end-#{$i}-#{$minutes} {
+        bottom: percentage($this_bottom);
+      }
+      $loop_counter: $loop_counter + 1;
+    }
+  }
+}
+
+@mixin placeholder {
+// Used to style the placebolder attribute for textarea and inputs
+  &::-webkit-input-placeholder {
+     @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     @content;
+  }
+
+  &:-ms-input-placeholder {  
+     @content;
+  }
+}

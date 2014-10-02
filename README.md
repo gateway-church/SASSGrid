@@ -117,6 +117,22 @@ The trans-bg mixin is a quick and easy way to generate a background color with s
 }
 ```
 
+#### @mixin gradient
+Allows quick and easy creation of CSS-based gradients for the background of an element.
+
+| Argument    | Values                    | Default  |
+| ---------   | :--------                 | :------- |
+| start_color | Any valid CSS color value | --       |
+| end_color   | Any valid CSS color value | --       |
+
+**Example Usage**
+The following style would generate a gradient that goes from white to black.
+```scss
+.element {
+	@include gradient(white,black);
+}
+```
+
 #### @mixin gradient-trans
 Allows quick and easy creation of CSS-based gradients for the background of an element.
 
@@ -156,7 +172,7 @@ a { // Apply transitions to all attributes
 ```
 
 #### @mixin outer-glow
-Used to create a subtle outer-glow effect similar to Adobe's Photoshop
+Used to create a subtle outer-glow effect similar to Adobe's Photoshop.
 
 | Argument | Values                                                        | Default           |
 | -------- | :------                                                       | :-------          |
@@ -171,3 +187,18 @@ Used to create a subtle outer-glow effect similar to Adobe's Photoshop
 }
 ```
 
+#### @mixin bevel
+Used to create a beveled effect on a given element.
+
+| Argument | Values                                                         | Default  |
+| -------- | :------                                                        | :------- |
+| size     | The thickness of the bevel (in pixels)                         | 1        |
+| strength | How strong/opaque the bevel should be (opacity)                | .3       |
+| reverse  | true/false - wether or not the bevel effect should be reversed | false    |
+
+**Example Usage**
+```scss
+.element {
+	@include bevel();
+}
+```
