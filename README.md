@@ -202,3 +202,44 @@ Used to create a beveled effect on a given element.
 	@include bevel();
 }
 ```
+
+#### @mixin border-radius
+Used to create cross-browser css-based rounded corners
+
+| Argument | Values                   | Default                                        |
+| -------- | :------                  | :-------                                       |
+| b-radius | The radius of the border | $b-radius-default (defined in _variables.scss) |
+
+**Example Usage**
+```scss
+.circle { // Create a circle
+	width: 100px;
+	height: 100px;
+	@include border-radius(50%);
+}
+
+.round-box { // Create a soft rounded box
+	@include border-radius(3px);
+}
+```
+
+In addition to the border-radius mixin we've also included a few useful mixins for generating a border radius on individual corners as well as top, bottom, left and right corners.
+
+```scss
+@mixin border-top-radius($b-radius:$b-radius-default);
+
+@mixin border-bottom-radius($b-radius:$b-radius-default);
+
+@mixin border-left-radius($b-radius:$b-radius-default);
+
+@mixin border-right-radius($b-radius:$b-radius-default);
+
+@mixin border-top-left-radius($b-radius:$b-radius-default);
+
+@mixin border-bottom-left-radius($b-radius:$b-radius-default);
+
+@mixin border-top-right-radius($b-radius:$b-radius-default);
+
+@mixin border-bottom-right-radius($b-radius:$b-radius-default);
+```
+
