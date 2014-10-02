@@ -2,7 +2,7 @@
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
 
 ## Basic Usage
-```sass
+```scss
 @import 
   "sassgrid/_variables.scss",
 	"sassgrid/_reset.scss",
@@ -94,7 +94,7 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 | height       | a numeric value that represents the desired height of the triangle    | $width    |
 	
 **Example Usage**
-```sass
+```scss
 .element {
 	&:before {
 		@include triangle(down,white,10,10);
@@ -111,7 +111,7 @@ The trans-bg mixin is a quick and easy way to generate a background color with s
 | alpha     | a numeric value from 0 to 1 representing the opacity for the background | 1        |
 
 **Example Usage**
-```sass
+```scss
 .element {
 	@include trans-bg(#ffffff,.5);
 }
@@ -129,7 +129,7 @@ Allows quick and easy creation of CSS-based gradients for the background of an e
 
 **Example Usage**
 The following style would generate a gradient that goes from fully opaque white to 20% opaque white.
-```sass
+```scss
 .element {
 	@include gradient-trans(white,1,white,.2);
 }
@@ -144,7 +144,7 @@ A quick shorthand mixin for adding a transition property to an element.
 | animation | the easing method to use for the transition                  | ease-in-out |
 
 **Example Usage**
-```sass
+```scss
 a { // Apply transitions to all attributes
 	background: red;
 	@include transitions();
@@ -165,7 +165,7 @@ Used to create a subtle outer-glow effect similar to Adobe's Photoshop
 | color    | The color of the glow, any valid CSS color value              | rgba(0, 0, 0, .4) |
 
 **Example Usage**
-```sass
+```scss
 .element {
 	@include outer-glow($color:red);
 }
