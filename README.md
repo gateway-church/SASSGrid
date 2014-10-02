@@ -86,13 +86,13 @@ One of the coolest parts of SASSGrid is the (ever growing) collection of helpful
 ### @mixin triangle
 The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arrows. It is commonly used inside of a &:before or &:after pseudo element in order to append a triangle to an element.
 	
-	|  Argument  |                               Values                               |
-	| ---------- | ------------------------------------------------------------------ |
-	| $direction | **up**, down, left, right, downComm                                |
-	| $color     | *(any valid CSS color value)*                                      |
-	| $width     | a numeric value that represents the desired width of the triangle  |
-	| $height    | a numeric value that represents the desired height of the triangle |
-
+	| Argument     | Values                                                               |
+	| ------------ | -------------------------------------------------------------------- |
+	| $direction   | **up**, down, left, right, downComm                                  |
+	| $color       | *(any valid CSS color value)*                                        |
+	| $width       | a numeric value that represents the desired width of the triangle    |
+	| $height      | a numeric value that represents the desired height of the triangle   |
+	
 **Example Usage**
 ```sass
 	.element {
