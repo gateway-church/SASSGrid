@@ -1,7 +1,7 @@
 # SASS Grid
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
 
-## Sample Usage
+## Basic Usage
 ```sass
 @import 
   "sassgrid/_variables.scss",
@@ -88,10 +88,10 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 	
 | Argument     | Values                                                               |
 | ------------ | -------------------------------------------------------------------- |
-| $direction   | **up**, down, left, right, downComm                                  |
-| $color       | *(any valid CSS color value)*                                        |
-| $width       | a numeric value that represents the desired width of the triangle    |
-| $height      | a numeric value that represents the desired height of the triangle   |
+| direction   | **up**, down, left, right, downComm                                  |
+| color       | *(any valid CSS color value)*                                        |
+| width       | a numeric value that represents the desired width of the triangle    |
+| height      | a numeric value that represents the desired height of the triangle   |
 	
 **Example Usage**
 ```sass
@@ -107,8 +107,8 @@ The trans-bg mixin is a quick and easy way to generate a background color with s
 
 | Argument  | Values                                                                  |
 | --------- | --------                                                                |
-| $color    | Any valid CSS color value                                               |
-| $alpha    | a numeric value from 0 to 1 representing the opacity for the background |
+| color    | Any valid CSS color value                                               |
+| alpha    | a numeric value from 0 to 1 representing the opacity for the background |
 
 **Example Usage**
 ```sass
@@ -122,10 +122,10 @@ Allows quick and easy creation of CSS-based gradients for the background of an e
 
 | Argument     | Values                                                                  |
 | ---------    | --------                                                                |
-| $start_color | Any valid CSS color value                                               |
-| $start_alpha | a numeric value from 0 to 1 representing the opacity for the background |
-| $end_color   | Any valid CSS color value                                               |
-| $end_alpha   | a numeric value from 0 to 1 representing the opacity for the background |
+| start_color | Any valid CSS color value                                               |
+| start_alpha | a numeric value from 0 to 1 representing the opacity for the background |
+| end_color   | Any valid CSS color value                                               |
+| end_alpha   | a numeric value from 0 to 1 representing the opacity for the background |
 
 **Example Usage**
 The following style would generate a gradient that goes from fully opaque white to 20% opaque white.
