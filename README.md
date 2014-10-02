@@ -83,15 +83,15 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 ## Helpful Mixins
 One of the coolest parts of SASSGrid is the (ever growing) collection of helpful mixins. Below are just a couple of them.
 
-### @mixin triangle
+#### @mixin triangle
 The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arrows. It is commonly used inside of a &:before or &:after pseudo element in order to append a triangle to an element.
 	
-	| Argument     | Values                                                               |
-	| ------------ | -------------------------------------------------------------------- |
-	| $direction   | **up**, down, left, right, downComm                                  |
-	| $color       | *(any valid CSS color value)*                                        |
-	| $width       | a numeric value that represents the desired width of the triangle    |
-	| $height      | a numeric value that represents the desired height of the triangle   |
+| Argument     | Values                                                               |
+| ------------ | -------------------------------------------------------------------- |
+| $direction   | **up**, down, left, right, downComm                                  |
+| $color       | *(any valid CSS color value)*                                        |
+| $width       | a numeric value that represents the desired width of the triangle    |
+| $height      | a numeric value that represents the desired height of the triangle   |
 	
 **Example Usage**
 ```sass
@@ -101,3 +101,20 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 		}
 	}
 ```
+
+#### @mixin trans-bg
+The trans-bg mixin is a quick and easy way to generate a background color with support for alpha transparency. 
+
+| Argument  | Values                                                                  |
+| --------- | --------                                                                |
+| $color    | Any valid CSS color value                                               |
+| $alpha    | a numeric value from 0 to 1 representing the opacity for the background |
+
+**Example Usage**
+```sass
+	.element {
+		@include trans-bg(#ffffff,.5);
+	}
+```
+
+#### @mixin gradient-trans
