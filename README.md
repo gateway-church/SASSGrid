@@ -4,7 +4,7 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 ## Basic Usage
 ```scss
 @import 
-  "sassgrid/_variables.scss",
+	"sassgrid/_variables.scss",
 	"sassgrid/_reset.scss",
 	"sassgrid/_grid.scss",
 	"sassgrid/_mixin.scss";
@@ -39,7 +39,7 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 	}
 	
 	&:last-child {
-  	@include col-last(1,2,5);
+		@include col-last(1,2,5);
 	}
 	
 }
@@ -52,7 +52,7 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 	}
 
   &:last-child {
-  	@include col-last(2,3,5);
+		@include col-last(2,3,5);
 	}
   
 }
