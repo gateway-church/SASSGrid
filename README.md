@@ -96,11 +96,20 @@ To make using breakpoints as simple as possible we've created a handy mixin call
 		width: 100%;
 		float: none;
 	}
+}
+```
+
+Here's how you would do the same but instead of having it change on v-tablet it'll only change on mobile resolutions.
+
+```scss
+// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+	@include col(1,2,5);
 	
-	&:last-child {
-		@include col-last(1,2,5);
+	@include break(mobile) {
+		width: 100%;
+		float: none;
 	}
-	
 }
 ```
 
