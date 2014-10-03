@@ -1,6 +1,8 @@
 # SASS Grid
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
 
+The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system.
+
 ## Basic Usage
 ```scss
 @import 
@@ -80,6 +82,28 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 }
 
 ```
+## Creating Breakpoints
+To make using breakpoints as simple as possible we've created a handy mixin called __break__ which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let's start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).
+
+```scss
+// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+	// Will be a 50% column with a 5% margin down to
+	// the v-tablet breakpoint at which point it becomes 100% width
+	@include col(1,2,5);
+	
+	@include break(v-tablet) {
+		width: 100%;
+		float: none;
+	}
+	
+	&:last-child {
+		@include col-last(1,2,5);
+	}
+	
+}
+```
+
 ## Helpful Mixins
 One of the coolest parts of SASSGrid is the (ever growing) collection of helpful mixins. Below are just a couple of them.
 
