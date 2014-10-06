@@ -27,7 +27,7 @@
 	}
 }
 
-@mixin break-contain($pt-group) {  
+@mixin break-contain($pt-group) {
 	@if $pt-group == desk {
 		@media only screen and (min-width: $tablet) { @content }
 	}
@@ -57,7 +57,7 @@
 // Set before and after on any selector using the mixin below
 // options: @include clearfix(before); @include clearfix(after);
 
-@mixin clearfix($where) {  
+@mixin clearfix($where) {
 	@if $where == before {
 		&:before {
 			content: ' ';

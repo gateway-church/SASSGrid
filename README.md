@@ -85,6 +85,8 @@ The benefit of SASSGrid vs other grid systems is in its ability to create 100% f
 ## Getting Started
 Thank you for using SASSGrid! Below are a few steps to help you get started using SASSGrid in your projects.
 
+
+
 ## Grid System Basics
 The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn't include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there's now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.
 
@@ -92,7 +94,7 @@ The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGr
 The primary mixin you're going to be using for your columns is the col() mixin. There is also a col-last() mixin that will be used in some cases, we'll discuss that next.
 
 | Argument     | Values                                                             | Default  |
-| ---------    | :--------                                                          | :------- |
+| :--------    | :--------                                                          | :------- |
 | col-count    | (int) The number of total-col you want this col to span, numerator | --       |
 | total-col    | (int) The width                                                    | --       |
 | gutter-width |                                                                    |          |
