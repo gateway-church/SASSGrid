@@ -1,0 +1,555 @@
+<h1>SASS Grid</h1>
+
+<p>A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It&rsquo;s pretty sweet.</p>
+
+<p>The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system.</p>
+
+<h2>Basic Usage</h2>
+
+<p>```scss
+@import
+    &ldquo;sassgrid/<em>variables.scss&rdquo;,
+    &ldquo;sassgrid/</em>reset.scss&rdquo;,
+    &ldquo;sassgrid/<em>grid.scss&rdquo;,
+    &ldquo;sassgrid/</em>mixin.scss&rdquo;;</p>
+
+<p>.parent-div {
+    /<em>
+        * Example Usage for grid() mixin</em>
+        The grid() mixin will take all children of a given parent <div>
+        and make all of its children fit into a grid system defined below.
+        It&rsquo;s important to define all breakpoints to avoid inheritance issues between
+        breakpoints.
+    */</p>
+
+<pre><code>@include grid(desk,2,5);
+@include grid(tablet-desk,2,5);
+@include grid(v-tablet-tablet,2,5);
+@include grid(mobile-v-tablet,1,0);
+@include grid(v-mobile-mobile,1,0);
+</code></pre>
+
+<p>}</p>
+
+<p>// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+    // Will be a 50% column with a 5% margin down to
+    // the v-tablet breakpoint at which point it becomes 100% width
+    @include col(1,2,5);</p>
+
+<pre><code>@include break(v-tablet) {
+    width: 100%;
+    float: none;
+}
+
+&amp;:last-child {
+    @include col-last(1,2,5);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>.col-2-3 {
+    @include col(2,3,5);
+  @include break(v-tablet) {
+        width: 100%;
+        float: none;
+    }</p>
+
+<p>  &amp;:last-child {
+        @include col-last(2,3,5);
+    }</p>
+
+<p>}</p>
+
+<p>.col-1-3 {
+    @include col(1,3,5);
+  @include break(v-tablet) {
+        width: 100%;
+        float: none;
+    }</p>
+
+<p>  &amp;:last-child {
+    @include col-last(1,3,5);
+    }</p>
+
+<p>}</p>
+
+<p>.col-1-3-last {
+    @include col-last(1,3,5);
+        @include break(v-tablet) {
+        width: 100%;
+        float: none;
+    }</p>
+
+<p>}
+```</p>
+
+<h2>Getting Started</h2>
+
+<p>Thank you for using SASSGrid! Below are a few steps to help you get started using SASSGrid in your projects.</p>
+
+<h2>Grid System Basics</h2>
+
+<p>The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn&rsquo;t include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there&rsquo;s now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.</p>
+
+<h3>@mixin col()</h3>
+
+<p>The primary mixin you&rsquo;re going to be using for your columns is the col() mixin. There is also a col-last() mixin that will be used in some cases, we&rsquo;ll discuss that next.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument     </th>
+<th align="left"> Values                                                             </th>
+<th align="left"> Default  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> col-count    </td>
+<td align="left"> (int) The number of total-col you want this col to span, numerator </td>
+<td align="left"> &ndash;       </td>
+</tr>
+<tr>
+<td> total-col    </td>
+<td align="left"> (int) The width                                                    </td>
+<td align="left"> &ndash;       </td>
+</tr>
+<tr>
+<td> gutter-width </td>
+<td align="left">                                                                    </td>
+<td align="left">          </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The col() mixin&rsquo;s first two arguments are actually the fraction of total width you want the column to take up. So, let&rsquo;s say you wanted a column that was half the width of its parent container. You would do that like so&hellip;</p>
+
+<p><code>scss
+.col-1-2 {
+    // produces a column that's half of the width of its parent.
+    @include col(1,2,0);
+}
+</code></p>
+
+<p>Notice the first two arguments create the fraction &frac12;. Here&rsquo;s how you&rsquo;d make a 2/3 column.</p>
+
+<p><code>scss
+.col-2-3 {
+    // produced a column that's 2/3 of the width of its parent.
+    @include col(2,3,0);
+}
+.col-1-3 {
+    // produces a column that's 1/3 of the width of its parent.
+    @include col(1,3,0);
+}
+</code></p>
+
+<h3>Gutters</h3>
+
+<p>You&rsquo;ll typically find it asthetically pleasing to have a bit of margin between your columns, which is where gutters come in handy.</p>
+
+<h3>Setting up predefined column classes</h3>
+
+<p>Should you find it necessary or helpful to have a predefined set of column classes that you can easily integrate into your markup you can use @mixin col-build.</p>
+
+<p>```scss
+//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;</p>
+
+<p>@include break-contain(desk) {
+    @include col-build(desk,$col-number);
+}</p>
+
+<p>@include break-contain(tablet-desk) {
+    @include col-build(tablet,$col-number);
+}</p>
+
+<p>@include break-contain(v-tablet-tablet) {
+    @include col-build(v-tablet,$col-number);
+}</p>
+
+<p>@include break-contain(mobile-v-tablet) {
+    @include col-build(mobile,$col-number);
+}</p>
+
+<p>@include break-contain(v-mobile-mobile) {
+    @include col-build(v-mobile,$col-number);
+}
+```</p>
+
+<h2>Creating Breakpoints</h2>
+
+<p>To make using breakpoints as simple as possible we&rsquo;ve created a handy mixin called <strong>break</strong> which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let&rsquo;s start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).</p>
+
+<p>```scss
+// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+    // Will be a 50% column with a 5% margin down to
+    // the v-tablet breakpoint at which point it becomes 100% width
+    @include col(1,2,5);</p>
+
+<pre><code>@include break(v-tablet) {
+    width: 100%;
+    float: none;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Here&rsquo;s how you would do the same but instead of having it change on v-tablet it&rsquo;ll only change on mobile resolutions.</p>
+
+<p>```scss
+// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+    @include col(1,2,5);</p>
+
+<pre><code>@include break(mobile) {
+    width: 100%;
+    float: none;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Helpful Mixins</h2>
+
+<p>One of the coolest parts of SASSGrid is the (ever growing) collection of helpful mixins. Below are just a couple of them.</p>
+
+<h4>@mixin triangle</h4>
+
+<p>The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arrows. It is commonly used inside of a &amp;:before or &amp;:after pseudo element in order to append a triangle to an element.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument     </th>
+<th align="left"> Values                                                                </th>
+<th align="left"> Defaults  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> direction    </td>
+<td align="left"> <strong>up</strong>, down, left, right, downComm                                   </td>
+<td align="left"> up        </td>
+</tr>
+<tr>
+<td> color        </td>
+<td align="left"> <em>(any valid CSS color value)</em>                                         </td>
+<td align="left"> white     </td>
+</tr>
+<tr>
+<td> width        </td>
+<td align="left"> a numeric value that represents the desired width of the triangle     </td>
+<td align="left"> 100       </td>
+</tr>
+<tr>
+<td> height       </td>
+<td align="left"> a numeric value that represents the desired height of the triangle    </td>
+<td align="left"> $width    </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+<code>scss
+.element {
+    &amp;:before {
+        @include triangle(down,white,10,10);
+    }
+}
+</code></p>
+
+<h4>@mixin trans-bg</h4>
+
+<p>The trans-bg mixin is a quick and easy way to generate a background color with support for alpha transparency.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument  </th>
+<th align="left"> Values                                                                  </th>
+<th align="left"> Default  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> color     </td>
+<td align="left"> Any valid CSS color value                                               </td>
+<td align="left"> &ndash;       </td>
+</tr>
+<tr>
+<td> alpha     </td>
+<td align="left"> a numeric value from 0 to 1 representing the opacity for the background </td>
+<td align="left"> 1        </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+<code>scss
+.element {
+    @include trans-bg(#ffffff,.5);
+}
+</code></p>
+
+<h4>@mixin gradient</h4>
+
+<p>Allows quick and easy creation of CSS-based gradients for the background of an element.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument    </th>
+<th align="left"> Values                    </th>
+<th align="left"> Default  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> start_color </td>
+<td align="left"> Any valid CSS color value </td>
+<td align="left"> &ndash;       </td>
+</tr>
+<tr>
+<td> end_color   </td>
+<td align="left"> Any valid CSS color value </td>
+<td align="left"> &ndash;       </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+The following style would generate a gradient that goes from white to black.
+<code>scss
+.element {
+    @include gradient(white,black);
+}
+</code></p>
+
+<h4>@mixin gradient-trans</h4>
+
+<p>Allows quick and easy creation of CSS-based gradients for the background of an element.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument    </th>
+<th align="left"> Values                                                                  </th>
+<th align="left"> Default           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> start_color </td>
+<td align="left"> Any valid CSS color value                                               </td>
+<td align="left"> darken($grey,20%) </td>
+</tr>
+<tr>
+<td> start_alpha </td>
+<td align="left"> a numeric value from 0 to 1 representing the opacity for the background </td>
+<td align="left"> 0                 </td>
+</tr>
+<tr>
+<td> end_color   </td>
+<td align="left"> Any valid CSS color value                                               </td>
+<td align="left"> darken($grey,60%) </td>
+</tr>
+<tr>
+<td> end_alpha   </td>
+<td align="left"> a numeric value from 0 to 1 representing the opacity for the background </td>
+<td align="left"> .5                </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+The following style would generate a gradient that goes from fully opaque white to 20% opaque white.
+<code>scss
+.element {
+    @include gradient-trans(white,1,white,.2);
+}
+</code></p>
+
+<h4>@mixin transitions</h4>
+
+<p>A quick shorthand mixin for adding a transition property to an element.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument  </th>
+<th align="left"> Values                                                       </th>
+<th align="left"> Default     </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> selector  </td>
+<td align="left"> attribute/property to which you want to apply the transition </td>
+<td align="left"> all         </td>
+</tr>
+<tr>
+<td> animation </td>
+<td align="left"> the easing method to use for the transition                  </td>
+<td align="left"> ease-in-out </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+```scss
+a { // Apply transitions to all attributes
+    background: red;
+    @include transitions();</p>
+
+<pre><code>&amp;:hover {
+    background: blue;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>@mixin outer-glow</h4>
+
+<p>Used to create a subtle outer-glow effect similar to Adobe&rsquo;s Photoshop.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument </th>
+<th align="left"> Values                                                        </th>
+<th align="left"> Default           </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> size     </td>
+<td align="left"> The number of pixels the glow should eminate from the element </td>
+<td align="left"> 10                </td>
+</tr>
+<tr>
+<td> spread   </td>
+<td align="left"> The number of pixels the glow should spread from the element  </td>
+<td align="left"> 0                 </td>
+</tr>
+<tr>
+<td> color    </td>
+<td align="left"> The color of the glow, any valid CSS color value              </td>
+<td align="left"> rgba(0, 0, 0, .4) </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+<code>scss
+.element {
+    @include outer-glow($color:red);
+}
+</code></p>
+
+<h4>@mixin bevel</h4>
+
+<p>Used to create a beveled effect on a given element.</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument </th>
+<th align="left"> Values                                                         </th>
+<th align="left"> Default  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> size     </td>
+<td align="left"> The thickness of the bevel (in pixels)                         </td>
+<td align="left"> 1        </td>
+</tr>
+<tr>
+<td> strength </td>
+<td align="left"> How strong/opaque the bevel should be (opacity)                </td>
+<td align="left"> .3       </td>
+</tr>
+<tr>
+<td> reverse  </td>
+<td align="left"> true/false - wether or not the bevel effect should be reversed </td>
+<td align="left"> false    </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+<code>scss
+.element {
+    @include bevel();
+}
+</code></p>
+
+<h4>@mixin border-radius</h4>
+
+<p>Used to create cross-browser css-based rounded corners</p>
+
+<table>
+<thead>
+<tr>
+<th> Argument </th>
+<th align="left"> Values                   </th>
+<th align="left"> Default                                        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> b-radius </td>
+<td align="left"> The radius of the border </td>
+<td align="left"> $b-radius-default (defined in _variables.scss) </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Example Usage</strong>
+```scss
+.circle { // Create a circle
+    width: 100px;
+    height: 100px;
+    @include border-radius(50%);
+}</p>
+
+<p>.round-box { // Create a soft rounded box
+    @include border-radius(3px);
+}
+```</p>
+
+<p>In addition to the border-radius mixin we&rsquo;ve also included a few useful mixins for generating a border radius on individual corners as well as top, bottom, left and right corners.</p>
+
+<p>```scss
+@mixin border-top-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-bottom-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-left-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-right-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-top-left-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-bottom-left-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-top-right-radius($b-radius:$b-radius-default);</p>
+
+<p>@mixin border-bottom-right-radius($b-radius:$b-radius-default);
+```</p>

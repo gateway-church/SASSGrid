@@ -80,8 +80,78 @@ The benefit of SASSGrid vs other grid systems is in its ability to create 100% f
 	}
 
 }
-
 ```
+
+## Getting Started
+Thank you for using SASSGrid! Below are a few steps to help you get started using SASSGrid in your projects.
+
+## Grid System Basics
+The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn't include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there's now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.
+
+### @mixin col()
+The primary mixin you're going to be using for your columns is the col() mixin. There is also a col-last() mixin that will be used in some cases, we'll discuss that next.
+
+| Argument     | Values                                                             | Default  |
+| ---------    | :--------                                                          | :------- |
+| col-count    | (int) The number of total-col you want this col to span, numerator | --       |
+| total-col    | (int) The width                                                    | --       |
+| gutter-width |                                                                    |          |
+
+The col() mixin's first two arguments are actually the fraction of total width you want the column to take up. So, let's say you wanted a column that was half the width of its parent container. You would do that like so...
+
+```scss
+.col-1-2 {
+	// produces a column that's half of the width of its parent.
+	@include col(1,2,0);
+}
+```
+
+Notice the first two arguments create the fraction 1/2. Here's how you'd make a 2/3 column.
+
+```scss
+.col-2-3 {
+	// produced a column that's 2/3 of the width of its parent.
+	@include col(2,3,0);
+}
+.col-1-3 {
+	// produces a column that's 1/3 of the width of its parent.
+	@include col(1,3,0);
+}
+```
+
+### Gutters
+You'll typically find it asthetically pleasing to have a bit of margin between your columns, which is where gutters come in handy.
+
+### Setting up predefined column classes
+Should you find it necessary or helpful to have a predefined set of column classes that you can easily integrate into your markup you can use @mixin col-build.
+
+```scss
+//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;
+
+@include break-contain(desk) {
+	@include col-build(desk,$col-number);
+}
+
+@include break-contain(tablet-desk) {
+	@include col-build(tablet,$col-number);
+}
+
+@include break-contain(v-tablet-tablet) {
+	@include col-build(v-tablet,$col-number);
+}
+
+@include break-contain(mobile-v-tablet) {
+	@include col-build(mobile,$col-number);
+}
+
+@include break-contain(v-mobile-mobile) {
+	@include col-build(v-mobile,$col-number);
+}
+```
+
+
+
 ## Creating Breakpoints
 To make using breakpoints as simple as possible we've created a handy mixin called __break__ which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let's start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).
 
