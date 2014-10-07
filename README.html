@@ -147,11 +147,58 @@
 }
 </code></p>
 
+<p>Please note that the col() mixin always applies a float: left attribute so what if you want to have a column that floats right? That&rsquo;s where the col-last() mixin comes in!</p>
+
+<p>```scss
+.col-2-3 {
+    @include col(2,3,0);
+}</p>
+
+<p>.col-1-3-last {
+    // produces a column that&rsquo;s 1/3 of the width of its parent.
+    @include col-last(1,3,0);
+}
+```</p>
+
+<p>The above will produce two columns, one that&rsquo;s 2/3 of the container width and another that&rsquo;s 1/3 of the container width that will float left and right respectively. Next we&rsquo;ll talk about gutters between columns.</p>
+
 <h3>Gutters</h3>
 
 <p>You&rsquo;ll typically find it asthetically pleasing to have a bit of margin between your columns, which is where gutters come in handy.</p>
 
-<h3>Setting up predefined column classes</h3>
+<p>The gutter width is a percentage of space that you want to have built-in between columns, so a gutter width value of 1 is equal to 1%. In addition to manually defining a gutter width you can also use the built-in gutter width variables outlined below.</p>
+
+<table>
+<thead>
+<tr>
+<th> Variable   </th>
+<th> Default Value   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> $gut-no    </td>
+<td> 0               </td>
+</tr>
+<tr>
+<td> $gut-sm    </td>
+<td> .1              </td>
+</tr>
+<tr>
+<td> $gut-med   </td>
+<td> 3               </td>
+</tr>
+<tr>
+<td> $gut-lg    </td>
+<td> 20              </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>These variables are definedin sassgrid/_variables.scss and can be modified to suit your needs. Please note that these gutter variables are used in the predefined column classes outlined below to generate predefined column classes with and without gutters.</p>
+
+<h3>Automatically setting up predefined column classes</h3>
 
 <p>Should you find it necessary or helpful to have a predefined set of column classes that you can easily integrate into your markup you can use @mixin col-build.</p>
 
@@ -179,6 +226,72 @@ $col-number: 4;</p>
     @include col-build(v-mobile,$col-number);
 }
 ```</p>
+
+<p>This will setup a large variety of predefined classes that you can easiy use to apply columning to your markup. The classes generated will be named as follows:</p>
+
+<p>The following classes will only be applied to devices that fall within the <strong>desk</strong> breakpoint or above.
+<strong>.desk-1-4-gut-lg</strong>
+<strong>.desk-1-4-gut-med</strong>
+<strong>.desk-1-4-gut-sm</strong>
+<strong>.desk-1-4</strong></p>
+
+<p><strong>.desk-1-3-gut-lg</strong>
+<strong>.desk-1-3-gut-med</strong>
+<strong>.desk-1-3-gut-sm</strong>
+<strong>.desk-1-3</strong></p>
+
+<p><strong>.desk-1-2-gut-lg</strong>
+<strong>.desk-1-2-gut-med</strong>
+<strong>.desk-1-2-gut-sm</strong>
+<strong>.desk-1-2</strong></p>
+
+<p>The following classes will only be applied to devices that fall within the <strong>tablet</strong> breakpoint range.
+<strong>.tablet-1-4-gut-lg</strong>
+<strong>.tablet-1-4-gut-med</strong>
+<strong>.tablet-1-4-gut-sm</strong>
+<strong>.tablet-1-4</strong></p>
+
+<p><strong>.tablet-1-3-gut-lg</strong>
+<strong>.tablet-1-3-gut-med</strong>
+<strong>.tablet-1-3-gut-sm</strong>
+<strong>.tablet-1-3</strong></p>
+
+<p><strong>.tablet-1-2-gut-lg</strong>
+<strong>.tablet-1-2-gut-med</strong>
+<strong>.tablet-1-2-gut-sm</strong>
+<strong>.tablet-1-2</strong></p>
+
+<p>The following classes will only be applied to devices that fall within the <strong>v-tablet</strong> breakpoint range.
+<strong>.v-tablet-1-4-gut-lg</strong>
+<strong>.v-tablet-1-4-gut-med</strong>
+<strong>.v-tablet-1-4-gut-sm</strong>
+<strong>.v-tablet-1-4</strong></p>
+
+<p><strong>.v-tablet-1-3-gut-lg</strong>
+<strong>.v-tablet-1-3-gut-med</strong>
+<strong>.v-tablet-1-3-gut-sm</strong>
+<strong>.v-tablet-1-3</strong></p>
+
+<p><strong>.v-tablet-1-2-gut-lg</strong>
+<strong>.v-tablet-1-2-gut-med</strong>
+<strong>.v-tablet-1-2-gut-sm</strong>
+<strong>.v-tablet-1-2</strong></p>
+
+<p>The following classes will only be applied to devices that fall within the <strong>mobile</strong> breakpoint range.
+<strong>.v-tablet-1-4-gut-lg</strong>
+<strong>.v-tablet-1-4-gut-med</strong>
+<strong>.v-tablet-1-4-gut-sm</strong>
+<strong>.v-tablet-1-4</strong></p>
+
+<p><strong>.v-tablet-1-3-gut-lg</strong>
+<strong>.v-tablet-1-3-gut-med</strong>
+<strong>.v-tablet-1-3-gut-sm</strong>
+<strong>.v-tablet-1-3</strong></p>
+
+<p><strong>.v-tablet-1-2-gut-lg</strong>
+<strong>.v-tablet-1-2-gut-med</strong>
+<strong>.v-tablet-1-2-gut-sm</strong>
+<strong>.v-tablet-1-2</strong></p>
 
 <h2>Creating Breakpoints</h2>
 

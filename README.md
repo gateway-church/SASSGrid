@@ -121,10 +121,37 @@ Notice the first two arguments create the fraction 1/2. Here's how you'd make a 
 }
 ```
 
+Please note that the col() mixin always applies a float: left attribute so what if you want to have a column that floats right? That's where the col-last() mixin comes in!
+
+```scss
+.col-2-3 {
+	@include col(2,3,0);
+}
+
+.col-1-3-last {
+	// produces a column that's 1/3 of the width of its parent.
+	@include col-last(1,3,0);
+}
+```
+
+The above will produce two columns, one that's 2/3 of the container width and another that's 1/3 of the container width that will float left and right respectively. Next we'll talk about gutters between columns.
+
+
 ### Gutters
 You'll typically find it asthetically pleasing to have a bit of margin between your columns, which is where gutters come in handy.
 
-### Setting up predefined column classes
+The gutter width is a percentage of space that you want to have built-in between columns, so a gutter width value of 1 is equal to 1%. In addition to manually defining a gutter width you can also use the built-in gutter width variables outlined below.
+
+| Variable   | Default Value   |
+| ---------- | --------------- |
+| $gut-no    | 0               |
+| $gut-sm    | .1              |
+| $gut-med   | 3               |
+| $gut-lg    | 20              |
+
+These variables are definedin sassgrid/_variables.scss and can be modified to suit your needs. Please note that these gutter variables are used in the predefined column classes outlined below to generate predefined column classes with and without gutters.
+
+### Automatically setting up predefined column classes
 Should you find it necessary or helpful to have a predefined set of column classes that you can easily integrate into your markup you can use @mixin col-build.
 
 ```scss
@@ -152,7 +179,71 @@ $col-number: 4;
 }
 ```
 
+This will setup a large variety of predefined classes that you can easiy use to apply columning to your markup. The classes generated will be named as follows:
 
+The following classes will only be applied to devices that fall within the __desk__ breakpoint or above.
+__.desk-1-4-gut-lg__
+__.desk-1-4-gut-med__
+__.desk-1-4-gut-sm__
+__.desk-1-4__
+
+__.desk-1-3-gut-lg__
+__.desk-1-3-gut-med__
+__.desk-1-3-gut-sm__
+__.desk-1-3__
+
+__.desk-1-2-gut-lg__
+__.desk-1-2-gut-med__
+__.desk-1-2-gut-sm__
+__.desk-1-2__
+
+The following classes will only be applied to devices that fall within the __tablet__ breakpoint range.
+__.tablet-1-4-gut-lg__
+__.tablet-1-4-gut-med__
+__.tablet-1-4-gut-sm__
+__.tablet-1-4__
+
+__.tablet-1-3-gut-lg__
+__.tablet-1-3-gut-med__
+__.tablet-1-3-gut-sm__
+__.tablet-1-3__
+
+__.tablet-1-2-gut-lg__
+__.tablet-1-2-gut-med__
+__.tablet-1-2-gut-sm__
+__.tablet-1-2__
+
+The following classes will only be applied to devices that fall within the __v-tablet__ breakpoint range.
+__.v-tablet-1-4-gut-lg__
+__.v-tablet-1-4-gut-med__
+__.v-tablet-1-4-gut-sm__
+__.v-tablet-1-4__
+
+__.v-tablet-1-3-gut-lg__
+__.v-tablet-1-3-gut-med__
+__.v-tablet-1-3-gut-sm__
+__.v-tablet-1-3__
+
+__.v-tablet-1-2-gut-lg__
+__.v-tablet-1-2-gut-med__
+__.v-tablet-1-2-gut-sm__
+__.v-tablet-1-2__
+
+The following classes will only be applied to devices that fall within the __mobile__ breakpoint range.
+__.v-tablet-1-4-gut-lg__
+__.v-tablet-1-4-gut-med__
+__.v-tablet-1-4-gut-sm__
+__.v-tablet-1-4__
+
+__.v-tablet-1-3-gut-lg__
+__.v-tablet-1-3-gut-med__
+__.v-tablet-1-3-gut-sm__
+__.v-tablet-1-3__
+
+__.v-tablet-1-2-gut-lg__
+__.v-tablet-1-2-gut-med__
+__.v-tablet-1-2-gut-sm__
+__.v-tablet-1-2__
 
 ## Creating Breakpoints
 To make using breakpoints as simple as possible we've created a handy mixin called __break__ which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let's start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).
