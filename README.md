@@ -3,6 +3,27 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 
 The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system.
 
+__Table of Contents__
+* Basic Usage
+* [Getting Started](#getting-started)
+* Grid System Basics
+	* @mixin col()
+	* Gutters
+	* Automatically setting up predefined column classes
+* Creating Responsive Breakpoints
+	* @mixin break-contain
+* Helpful Mixins
+	* @mixin triangle()
+	* @mixin trans-bg()
+	* @mixin gradient()
+	* @mixin gradient-trans()
+	* @mixin transitions()
+	* @mixin outer-glow()
+	* @mixin bevel()
+	* @mixin border-radius()
+
+
+
 ## Basic Usage
 ```scss
 @import 
@@ -283,7 +304,7 @@ Sometimes you'll run into a situation (because of CSS inheritance mostly) where 
 // Only show an element for larger screens
 .desktop-only {
 	display: none;
-	
+
 	@include break-contain(desk) {
 		display: initial;
 	}
