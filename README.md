@@ -4,15 +4,15 @@ A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layo
 The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system.
 
 __Table of Contents__
-* [Basic Usage](https://github.com/gateway-church/SASSGrid/blob/master/README.md#basic-usage)
-* [Getting Started](https://github.com/gateway-church/SASSGrid/blob/master/README.md#getting-started)
-* [Grid System Basics](https://github.com/gateway-church/SASSGrid/blob/master/README.md#grid-system-basics)
+* __[Basic Usage](https://github.com/gateway-church/SASSGrid/blob/master/README.md#basic-usage)__
+* __[Getting Started](https://github.com/gateway-church/SASSGrid/blob/master/README.md#getting-started)__
+* __[Grid System Basics](https://github.com/gateway-church/SASSGrid/blob/master/README.md#grid-system-basics)__
 	* @mixin col()
 	* Gutters
 	* Automatically setting up predefined column classes
-* [Creating Responsive Breakpoints](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints)
+* __[Creating Responsive Breakpoints](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints)__
 	* @mixin break-contain
-* [Helpful Mixins](https://github.com/gateway-church/SASSGrid/blob/master/README.md#helpful-mixins)
+* __[Helpful Mixins](https://github.com/gateway-church/SASSGrid/blob/master/README.md#helpful-mixins)__
 	* @mixin triangle()
 	* @mixin trans-bg()
 	* @mixin gradient()
