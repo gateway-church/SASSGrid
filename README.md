@@ -1,7 +1,7 @@
 # SASSGrid
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
 
-The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system.
+The benefit of SASSGrid vs other grid systems is in its ability to create 100% fluid grid layouts without the need for altering markup to make use of the grid system. Despite its name, SASSGrid is actually written in the SCSS flavor.
 
 __Table of Contents__
 * __[Basic Usage](https://github.com/gateway-church/SASSGrid/blob/master/README.md#basic-usage)__
