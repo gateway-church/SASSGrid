@@ -179,71 +179,23 @@ $col-number: 4;
 }
 ```
 
-This will setup a large variety of predefined classes that you can easiy use to apply columning to your markup. The classes generated will be named as follows:
+This will setup a large variety of predefined classes that you can easiy use to apply columning to your markup. The classes generated will be named as follows (assuming the $col-number variable is set to 4):
 
-The following classes will only be applied to devices that fall within the __desk__ breakpoint or above.
-__.desk-1-4-gut-lg__
-__.desk-1-4-gut-med__
-__.desk-1-4-gut-sm__
-__.desk-1-4__
+| Classes for Desk and larger   | Classes for tablet   | Classes for v-tablet   | Classes for Mobile   |
+| ----------------------------- | -------------------- | ---------------------- | -------------------- |
+| .desk-1-4-gut-lg              | .tablet-1-4-gut-lg   | .v-tablet-1-4-gut-lg   | .mobile-1-4-gut-lg   |
+| .desk-1-4-gut-med             | .tablet-1-4-gut-med  | .v-tablet-1-4-gut-med  | .mobile-1-4-gut-med  |
+| .desk-1-4-gut-sm              | .tablet-1-4-gut-sm   | .v-tablet-1-4-gut-sm   | .mobile-1-4-gut-sm   |
+| .desk-1-4                     | .tablet-1-4          | .v-tablet-1-4          | .mobile-1-4          |
+| .desk-1-3-gut-lg              | .tablet-1-3-gut-lg   | .v-tablet-1-3-gut-lg   | .mobile-1-3-gut-lg   |
+| .desk-1-3-gut-med             | .tablet-1-3-gut-med  | .v-tablet-1-3-gut-med  | .mobile-1-3-gut-med  |
+| .desk-1-3-gut-sm              | .tablet-1-3-gut-sm   | .v-tablet-1-3-gut-sm   | .mobile-1-3-gut-sm   |
+| .desk-1-3                     | .tablet-1-3          | .v-tablet-1-3          | .mobile-1-3          |
+| .desk-1-2-gut-lg              | .tablet-1-2-gut-lg   | .v-tablet-1-2-gut-lg   | .mobile-1-2-gut-lg   |
+| .desk-1-2-gut-med             | .tablet-1-2-gut-med  | .v-tablet-1-2-gut-med  | .mobile-1-2-gut-med  |
+| .desk-1-2-gut-sm              | .tablet-1-2-gut-sm   | .v-tablet-1-2-gut-sm   | .mobile-1-2-gut-sm   |
+| .desk-1-2                     | .tablet-1-2          | .v-tablet-1-2          | .mobile-1-2          |
 
-__.desk-1-3-gut-lg__
-__.desk-1-3-gut-med__
-__.desk-1-3-gut-sm__
-__.desk-1-3__
-
-__.desk-1-2-gut-lg__
-__.desk-1-2-gut-med__
-__.desk-1-2-gut-sm__
-__.desk-1-2__
-
-The following classes will only be applied to devices that fall within the __tablet__ breakpoint range.
-__.tablet-1-4-gut-lg__
-__.tablet-1-4-gut-med__
-__.tablet-1-4-gut-sm__
-__.tablet-1-4__
-
-__.tablet-1-3-gut-lg__
-__.tablet-1-3-gut-med__
-__.tablet-1-3-gut-sm__
-__.tablet-1-3__
-
-__.tablet-1-2-gut-lg__
-__.tablet-1-2-gut-med__
-__.tablet-1-2-gut-sm__
-__.tablet-1-2__
-
-The following classes will only be applied to devices that fall within the __v-tablet__ breakpoint range.
-__.v-tablet-1-4-gut-lg__
-__.v-tablet-1-4-gut-med__
-__.v-tablet-1-4-gut-sm__
-__.v-tablet-1-4__
-
-__.v-tablet-1-3-gut-lg__
-__.v-tablet-1-3-gut-med__
-__.v-tablet-1-3-gut-sm__
-__.v-tablet-1-3__
-
-__.v-tablet-1-2-gut-lg__
-__.v-tablet-1-2-gut-med__
-__.v-tablet-1-2-gut-sm__
-__.v-tablet-1-2__
-
-The following classes will only be applied to devices that fall within the __mobile__ breakpoint range.
-__.v-tablet-1-4-gut-lg__
-__.v-tablet-1-4-gut-med__
-__.v-tablet-1-4-gut-sm__
-__.v-tablet-1-4__
-
-__.v-tablet-1-3-gut-lg__
-__.v-tablet-1-3-gut-med__
-__.v-tablet-1-3-gut-sm__
-__.v-tablet-1-3__
-
-__.v-tablet-1-2-gut-lg__
-__.v-tablet-1-2-gut-med__
-__.v-tablet-1-2-gut-sm__
-__.v-tablet-1-2__
 
 ## Creating Breakpoints
 To make using breakpoints as simple as possible we've created a handy mixin called __break__ which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let's start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).
