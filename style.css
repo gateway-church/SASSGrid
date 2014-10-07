@@ -499,7 +499,7 @@ svg {
       width: 0;
       height: 0;
       clear: both; } }
-@media only screen and (min-width: 960px) and (max-width: 960px) {
+@media only screen and (min-width: 760px) and (max-width: 960px) {
   .tablet-1-4-gut-lg {
     width: 10%;
     margin-right: 20%;
@@ -775,7 +775,7 @@ svg {
       width: 0;
       height: 0;
       clear: both; } }
-@media only screen and (min-width: 760px) and (max-width: 960px) {
+@media only screen and (min-width: 660px) and (max-width: 760px) {
   .v-tablet-1-4-gut-lg {
     width: 10%;
     margin-right: 20%;
@@ -1051,7 +1051,7 @@ svg {
       width: 0;
       height: 0;
       clear: both; } }
-@media only screen and (min-width: 500px) and (max-width: 760px) {
+@media only screen and (min-width: 500px) and (max-width: 660px) {
   .mobile-1-4-gut-lg {
     width: 10%;
     margin-right: 20%;
@@ -1626,21 +1626,6 @@ svg {
         margin-right: 0; }
       .parent-div:nth-of-type(2n+1) {
         clear: left; } }
-  @media only screen and (min-width: 960px) and (max-width: 960px) {
-    .parent-div {
-      width: 47.5%;
-      margin-right: 5%;
-      display: block;
-      float: left;
-      list-style-type: none;
-      position: relative;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box; }
-      .parent-div:nth-of-type(2n) {
-        margin-right: 0; }
-      .parent-div:nth-of-type(2n+1) {
-        clear: left; } }
   @media only screen and (min-width: 760px) and (max-width: 960px) {
     .parent-div {
       width: 47.5%;
@@ -1656,7 +1641,22 @@ svg {
         margin-right: 0; }
       .parent-div:nth-of-type(2n+1) {
         clear: left; } }
-  @media only screen and (min-width: 500px) and (max-width: 760px) {
+  @media only screen and (min-width: 660px) and (max-width: 760px) {
+    .parent-div {
+      width: 47.5%;
+      margin-right: 5%;
+      display: block;
+      float: left;
+      list-style-type: none;
+      position: relative;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      .parent-div:nth-of-type(2n) {
+        margin-right: 0; }
+      .parent-div:nth-of-type(2n+1) {
+        clear: left; } }
+  @media only screen and (min-width: 500px) and (max-width: 660px) {
     .parent-div {
       width: 100%;
       margin-right: 0%;
@@ -1697,7 +1697,7 @@ svg {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  @media only screen and (max-width: 960px) {
+  @media only screen and (max-width: 760px) {
     .col-1-2 {
       width: 100%;
       float: none; } }
@@ -1722,7 +1722,7 @@ svg {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  @media only screen and (max-width: 960px) {
+  @media only screen and (max-width: 760px) {
     .col-2-3 {
       width: 100%;
       float: none; } }
@@ -1747,7 +1747,7 @@ svg {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  @media only screen and (max-width: 960px) {
+  @media only screen and (max-width: 760px) {
     .col-1-3 {
       width: 100%;
       float: none; } }
@@ -1772,7 +1772,7 @@ svg {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  @media only screen and (max-width: 960px) {
+  @media only screen and (max-width: 760px) {
     .col-1-3-last {
       width: 100%;
       float: none; } }

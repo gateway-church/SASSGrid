@@ -13,6 +13,29 @@
     &ldquo;sassgrid/<em>grid.scss&rdquo;,
     &ldquo;sassgrid/</em>mixin.scss&rdquo;;</p>
 
+<p>//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;</p>
+
+<p>@include break-contain(desk) {
+    @include col-build(desk,$col-number);
+}</p>
+
+<p>@include break-contain(tablet-desk) {
+    @include col-build(tablet,$col-number);
+}</p>
+
+<p>@include break-contain(v-tablet-tablet) {
+    @include col-build(v-tablet,$col-number);
+}</p>
+
+<p>@include break-contain(mobile-v-tablet) {
+    @include col-build(mobile,$col-number);
+}</p>
+
+<p>@include break-contain(v-mobile-mobile) {
+    @include col-build(v-mobile,$col-number);
+}</p>
+
 <p>.parent-div {
     /<em>
         * Example Usage for grid() mixin</em>
@@ -341,7 +364,45 @@ $col-number: 4;</p>
 
 <h2>Creating Breakpoints</h2>
 
-<p>To make using breakpoints as simple as possible we&rsquo;ve created a handy mixin called <strong>break</strong> which allows you to attribute specific styling to devices with screen resolutions within a specific range. Let&rsquo;s start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).</p>
+<p>To make using breakpoints as simple as possible we&rsquo;ve created a handy mixin called <strong>break</strong> which allows you to attribute specific styling to devices with screen resolutions within a specific range.</p>
+
+<p>By default the breakpoints included in SASSGrid are:</p>
+
+<table>
+<thead>
+<tr>
+<th> breakpoint </th>
+<th> Default width  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> desk       </td>
+<td> >= 960px       </td>
+</tr>
+<tr>
+<td> tablet     </td>
+<td> 960px          </td>
+</tr>
+<tr>
+<td> v-tablet   </td>
+<td> 760px          </td>
+</tr>
+<tr>
+<td> mobile     </td>
+<td> 660px          </td>
+</tr>
+<tr>
+<td> v-mobile   </td>
+<td> 500px          </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Think of these breakpoints as the width of the viewer/browser at which each breakpoint will be triggered. So, when a browser is 960px or wider it&rsquo;ll fall in the desk breakpoint. If it&rsquo;s between 761 and 960 it&rsquo;ll fall into tablet, etc.</p>
+
+<p>Let&rsquo;s start with an example of how you would create a 50% column that would expand to full width for vertical tablets (v-tablet).</p>
 
 <p>```scss
 // Sample Column Styles with responsive breakpoints
@@ -369,6 +430,23 @@ $col-number: 4;</p>
 <pre><code>@include break(mobile) {
     width: 100%;
     float: none;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>@mixin break-contain</h4>
+
+<p>Sometimes you&rsquo;ll run into a situation (because of CSS inheritance mostly) where you&rsquo;ll need to contain or restrain a style to a very specific range of breakpoints. For example you may want to apply a style to an element ONLY if it falls in the desktop range and NOT have the style inherited down through the mobile breakpoint. To do this you use the break-contain mixin.</p>
+
+<p>```scss
+// Only show an element for larger screens
+.desktop-only {
+    display: none;</p>
+
+<pre><code>@include break-contain(desk) {
+    display: initial;
 }
 </code></pre>
 
