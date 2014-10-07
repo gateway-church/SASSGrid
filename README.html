@@ -311,9 +311,33 @@ $col-number: 4;</p>
 <td> .v-tablet-1-2          </td>
 <td> .mobile-1-2          </td>
 </tr>
+<tr>
+<td> .desk-full                    </td>
+<td> .tablet-full         </td>
+<td> .v-tablet-full         </td>
+<td> .mobile-full         </td>
+</tr>
 </tbody>
 </table>
 
+
+<p>What might not be obvious is that by combining multiple classes you can create responsive behaviour.</p>
+
+<p>```html</p>
+
+<div class="desk-1-4 tablet-1-2">
+    This will produce a column that goes from 1/4 width of its container on desktop to 1/2 of its container once the tablet breakpoint is triggered and remain 1/2 all the way down to mobile.
+</div>
+
+
+
+
+<div class="desk-1-4 tablet-1-2 v-tablet-full">
+    This will produce a column that goes from 1/4 width of its container on desktop to 1/2 of its container once the tablet breakpoint is triggered and then goes full width with the v-tablet breakpoint is reached.
+</div>
+
+
+<p>```</p>
 
 <h2>Creating Breakpoints</h2>
 

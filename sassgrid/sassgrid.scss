@@ -269,6 +269,12 @@
 		.#{$point}-1-#{$total-col}:nth-child(#{$total-col}n+1) { 
 			clear: left;
 		}
+		.#{$point}-full {
+			@include clearfix(before);
+			@include clearfix(after);
+			width: 100%;
+			float: none;
+		}
 		$total-col: $total-col - 1;
 	}
 }

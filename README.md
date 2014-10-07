@@ -195,6 +195,19 @@ This will setup a large variety of predefined classes that you can easiy use to 
 | .desk-1-2-gut-med             | .tablet-1-2-gut-med  | .v-tablet-1-2-gut-med  | .mobile-1-2-gut-med  |
 | .desk-1-2-gut-sm              | .tablet-1-2-gut-sm   | .v-tablet-1-2-gut-sm   | .mobile-1-2-gut-sm   |
 | .desk-1-2                     | .tablet-1-2          | .v-tablet-1-2          | .mobile-1-2          |
+| .desk-full                    | .tablet-full         | .v-tablet-full         | .mobile-full         |
+
+What might not be obvious is that by combining multiple classes you can create responsive behaviour.
+
+```html
+<div class="desk-1-4 tablet-1-2">
+	This will produce a column that goes from 1/4 width of its container on desktop to 1/2 of its container once the tablet breakpoint is triggered and remain 1/2 all the way down to mobile.
+</div>
+
+<div class="desk-1-4 tablet-1-2 v-tablet-full">
+	This will produce a column that goes from 1/4 width of its container on desktop to 1/2 of its container once the tablet breakpoint is triggered and then goes full width with the v-tablet breakpoint is reached.
+</div>
+```
 
 
 ## Creating Breakpoints

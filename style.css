@@ -297,6 +297,25 @@ svg {
   .desk-1-4:nth-child(4n+1) {
     clear: left; }
 
+  .desk-full {
+    width: 100%;
+    float: none; }
+    .desk-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .desk-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .desk-1-3-gut-lg {
     width: 20%;
     margin-right: 20%;
@@ -370,6 +389,25 @@ svg {
   .desk-1-3:nth-child(3n+1) {
     clear: left; }
 
+  .desk-full {
+    width: 100%;
+    float: none; }
+    .desk-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .desk-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .desk-1-2-gut-lg {
     width: 40%;
     margin-right: 20%;
@@ -441,7 +479,26 @@ svg {
     clear: left; }
 
   .desk-1-2:nth-child(2n+1) {
-    clear: left; } }
+    clear: left; }
+
+  .desk-full {
+    width: 100%;
+    float: none; }
+    .desk-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .desk-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; } }
 @media only screen and (min-width: 960px) and (max-width: 960px) {
   .tablet-1-4-gut-lg {
     width: 10%;
@@ -516,6 +573,25 @@ svg {
   .tablet-1-4:nth-child(4n+1) {
     clear: left; }
 
+  .tablet-full {
+    width: 100%;
+    float: none; }
+    .tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .tablet-1-3-gut-lg {
     width: 20%;
     margin-right: 20%;
@@ -589,6 +665,25 @@ svg {
   .tablet-1-3:nth-child(3n+1) {
     clear: left; }
 
+  .tablet-full {
+    width: 100%;
+    float: none; }
+    .tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .tablet-1-2-gut-lg {
     width: 40%;
     margin-right: 20%;
@@ -660,7 +755,26 @@ svg {
     clear: left; }
 
   .tablet-1-2:nth-child(2n+1) {
-    clear: left; } }
+    clear: left; }
+
+  .tablet-full {
+    width: 100%;
+    float: none; }
+    .tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; } }
 @media only screen and (min-width: 760px) and (max-width: 960px) {
   .v-tablet-1-4-gut-lg {
     width: 10%;
@@ -735,6 +849,25 @@ svg {
   .v-tablet-1-4:nth-child(4n+1) {
     clear: left; }
 
+  .v-tablet-full {
+    width: 100%;
+    float: none; }
+    .v-tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .v-tablet-1-3-gut-lg {
     width: 20%;
     margin-right: 20%;
@@ -808,6 +941,25 @@ svg {
   .v-tablet-1-3:nth-child(3n+1) {
     clear: left; }
 
+  .v-tablet-full {
+    width: 100%;
+    float: none; }
+    .v-tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .v-tablet-1-2-gut-lg {
     width: 40%;
     margin-right: 20%;
@@ -879,7 +1031,26 @@ svg {
     clear: left; }
 
   .v-tablet-1-2:nth-child(2n+1) {
-    clear: left; } }
+    clear: left; }
+
+  .v-tablet-full {
+    width: 100%;
+    float: none; }
+    .v-tablet-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-tablet-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; } }
 @media only screen and (min-width: 500px) and (max-width: 760px) {
   .mobile-1-4-gut-lg {
     width: 10%;
@@ -954,6 +1125,25 @@ svg {
   .mobile-1-4:nth-child(4n+1) {
     clear: left; }
 
+  .mobile-full {
+    width: 100%;
+    float: none; }
+    .mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .mobile-1-3-gut-lg {
     width: 20%;
     margin-right: 20%;
@@ -1027,6 +1217,25 @@ svg {
   .mobile-1-3:nth-child(3n+1) {
     clear: left; }
 
+  .mobile-full {
+    width: 100%;
+    float: none; }
+    .mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .mobile-1-2-gut-lg {
     width: 40%;
     margin-right: 20%;
@@ -1098,7 +1307,26 @@ svg {
     clear: left; }
 
   .mobile-1-2:nth-child(2n+1) {
-    clear: left; } }
+    clear: left; }
+
+  .mobile-full {
+    width: 100%;
+    float: none; }
+    .mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; } }
 @media only screen and (max-width: 500px) {
   .v-mobile-1-4-gut-lg {
     width: 10%;
@@ -1173,6 +1401,25 @@ svg {
   .v-mobile-1-4:nth-child(4n+1) {
     clear: left; }
 
+  .v-mobile-full {
+    width: 100%;
+    float: none; }
+    .v-mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .v-mobile-1-3-gut-lg {
     width: 20%;
     margin-right: 20%;
@@ -1246,6 +1493,25 @@ svg {
   .v-mobile-1-3:nth-child(3n+1) {
     clear: left; }
 
+  .v-mobile-full {
+    width: 100%;
+    float: none; }
+    .v-mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; }
+
   .v-mobile-1-2-gut-lg {
     width: 40%;
     margin-right: 20%;
@@ -1317,7 +1583,26 @@ svg {
     clear: left; }
 
   .v-mobile-1-2:nth-child(2n+1) {
-    clear: left; } }
+    clear: left; }
+
+  .v-mobile-full {
+    width: 100%;
+    float: none; }
+    .v-mobile-full:before {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .v-mobile-full:after {
+      content: ' ';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      clear: both; } }
 .parent-div {
   /*
   	* Example Usage for grid() mixin*
