@@ -1,3 +1,10 @@
+/* TO DO
+- Provide example code for Gutters
+- Remove bold from "up" on mixin triangle
+- Add docs for _variables.scss file and the variables contained within
+- Add docs for color variables and how they may be used
+*/
+
 # SASSGrid
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
 
