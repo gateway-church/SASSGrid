@@ -1,8 +1,3 @@
-#### TO DO
-- Provide example code for Gutters
-- Add docs for _variables.scss file and the variables contained within
-- Add docs for color variables and how they may be used
-
 <img src="https://s3.amazonaws.com/uploads.hipchat.com/13720/816805/Z9jiIX5ZPu4ZzZI/logo.png" width="300" />
 
 # SASSGrid
@@ -482,3 +477,7 @@ In addition to the border-radius mixin we've also included a few useful mixins f
 @mixin border-bottom-right-radius($b-radius:$b-radius-default);
 ```
 
+#### TO DO
+- Provide example code for Gutters
+- Add docs for _variables.scss file and the variables contained within
+- Add docs for color variables and how they may be used
