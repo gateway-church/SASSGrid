@@ -3,7 +3,7 @@
 - Add docs for _variables.scss file and the variables contained within
 - Add docs for color variables and how they may be used
 */
-<img src="https://s3.amazonaws.com/uploads.hipchat.com/13720/816805/Z9jiIX5ZPu4ZzZI/logo.png" />
+<img src="https://s3.amazonaws.com/uploads.hipchat.com/13720/816805/Z9jiIX5ZPu4ZzZI/logo.png" width="300" />
 
 # SASSGrid
 A simple but powerful SCSS-based grid system for achieiving 100% fluid grid layouts. It's pretty sweet.
