@@ -1,8 +1,8 @@
-/* TO DO
+#### TO DO
 - Provide example code for Gutters
 - Add docs for _variables.scss file and the variables contained within
 - Add docs for color variables and how they may be used
-*/
+
 <img src="https://s3.amazonaws.com/uploads.hipchat.com/13720/816805/Z9jiIX5ZPu4ZzZI/logo.png" width="300" />
 
 # SASSGrid
