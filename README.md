@@ -1,6 +1,5 @@
 /* TO DO
 - Provide example code for Gutters
-- Remove bold from "up" on mixin triangle
 - Add docs for _variables.scss file and the variables contained within
 - Add docs for color variables and how they may be used
 */
@@ -134,7 +133,9 @@ $col-number: 4;
 ## Getting Started
 Thank you for using SASSGrid! Below are a few steps to help you get started using SASSGrid in your projects.
 
+The first thing you're probably going to want to do is update the _variables.scss file to reflect your project needs. 
 
+/_variables.scss
 
 ## Grid System Basics
 The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn't include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there's now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.
@@ -325,7 +326,7 @@ The triangle mixin is a handy shorthand for creating 100% pure CSS triangles/arr
 	
 | Argument     | Values                                                                | Defaults  |
 | ------------ | :-------------------------------------------------------------------- | :-------- |
-| direction    | **up**, down, left, right, downComm                                   | up        |
+| direction    | up, down, left, right, downComm                                       | up        |
 | color        | *(any valid CSS color value)*                                         | white     |
 | width        | a numeric value that represents the desired width of the triangle     | 100       |
 | height       | a numeric value that represents the desired height of the triangle    | $width    |

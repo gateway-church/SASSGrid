@@ -26,3 +26,22 @@ $b-radius: 6px;
 
 // !GENERIC SPEED VARIABLE
 $speed: 1500ms;
+
+// !GRID SETTINGS
+// !GLOBAL RESPONSIVE VARIABLES
+$desk: 960px;
+$tablet: 960px; // This number needs to be the same as $desk to prevent a "no-mans-land" in breakpoints
+$v-tablet: 760px;
+$mobile: 660px;
+$v-mobile: 500px;
+$sm-mobile: 500px;
+
+// !GLOBAL GUTTER VARIABLES
+//column gutter variables we now how four options if using gutter space
+$gut-no: 0;
+$gut-sm: .1;
+$gut-med: 3;
+$gut-lg: 20;
+
+// !PADDING VARIABLES
+$wrap-pad: 6%;
