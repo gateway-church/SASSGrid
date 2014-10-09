@@ -166,13 +166,12 @@ In cases where projects vary only slightly in color you might choose to use pred
 
 ### Responsive/Other Variables
 
-| Variable                                                                                                         | Description                                                                                                                                                                    |
-| --------                                                                                                         | -----------                                                                                                                                                                    |
-| $b-radius                                                                                                        | The default border radius you would like to use for any elements that use them                                                                                                 |
-| $desk, $tablet, $v-tablet, $mobile, $v-mobile, $sm-mobile                                                        | Defined below in the [responsive section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints)                                               |
-|                                                                                                                  | $gut variables                                                                                                                                                                 |
-| Defined below in the [Gutters section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#gutters) | 
-| $wrap-pad                                                                                                        | A default padding that's applied to any column wrappers. Useful for setting up full-width designs where the content needs to be center alligned and inside of a defined width. |                                                                                         |
+| Variable                                                  | Description                                                                                                                      |
+| --------                                                  | -----------                                                                                                                      |
+| $b-radius                                                 | The default border radius you would like to use for any elements that use them                                                   |
+| $desk, $tablet, $v-tablet, $mobile, $v-mobile, $sm-mobile | Defined below in the [responsive section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints) |
+| $gut variables                                            | Defined below in the [Gutters section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#gutters)                 |
+| $wrap-pad                                                 | Useful for setting up full-width designs where the content needs to be center alligned and inside of a defined width.            |
 
 # Grid System Basics
 The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn't include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there's now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.
