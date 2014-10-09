@@ -129,11 +129,53 @@ $col-number: 4;
 ## Getting Started
 Thank you for using SASSGrid! Below are a few steps to help you get started using SASSGrid in your projects.
 
-The first thing you're probably going to want to do is update the _variables.scss file to reflect your project needs. 
+The first thing you're probably going to want to do is update the _variables.scss file to reflect your project needs. Located at /_variables.scss, the variables file includes many helpful settings that you can use to customize each project. Below is a table of the variables contained in the file by default.
 
-/_variables.scss
+### Font Variables
 
-## Grid System Basics
+| Variable     | Description                                                            |
+| --------     | -----------                                                            |
+| $f-primary   | A CSS font declaration for the primary typeface used on your project   |
+| $f-secondary | A CSS font declaration for the secondary typeface used on your project |
+
+### Absolute Color Variables
+| Variable    | Description                                                 |
+| --------    | -----------                                                 |
+| $black      | The CSS color value you'd like to represent black           |
+| $red        | The CSS color value you'd like to represent red             |
+| $blue       | The CSS color value you'd like to represent blue            |
+| $yellow     | The CSS color value you'd like to represent yellow          |
+| $green      | The CSS color value you'd like to represent green           |
+| $dark-grey  | The CSS color value you'd like to represent dark grey       |
+| $grey       | The CSS color value you'd like to represent grey            |
+| $light-grey | The CSS color value you'd like to represent light grey      |
+| $cream      | The CSS color value you'd like to represent cream/off-white |
+
+### Dynamic Color Variables
+
+In cases where projects vary only slightly in color you might choose to use predefined dynamic color variables which can make it easier to rapidly deploy similarly-styled projects.
+
+| Variable     | Description                                                |
+| --------     | -----------                                                |
+| $c-primary   | The primary CSS color of your project                      |
+| $c-secondary | A secondary CSS color of your project                      |
+| $c-tertiary  | A third CSS color of your project                          |
+| $c-accent    | The CSS color you would like to use as an accent           |
+| $c-footer    | The color you'd like to use for your footer background     |
+| $c-shadows   | A global CSS color value you would like to use for shadows |
+
+### Responsive/Other Variables
+
+| Variable                                                                                                         | Description                                                                                                                                                                    |
+| --------                                                                                                         | -----------                                                                                                                                                                    |
+| $b-radius                                                                                                        | The default border radius you would like to use for any elements that use them                                                                                                 |
+| $desk, $tablet, $v-tablet, $mobile, $v-mobile, $sm-mobile                                                        | Defined below in the [responsive section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints)                                               |
+|                                                                                                                  | $gut variables                                                                                                                                                                 |
+| Defined below in the [Gutters section](https://github.com/gateway-church/SASSGrid/blob/master/README.md#gutters) |                                                                                                                                                                                |
+| $wrap-pad                                                                                                        | A default padding that's applied to any column wrappers. Useful for setting up full-width designs where the content needs to be center alligned and inside of a defined width. |
+|                                                                                                                  |                                                                                                                                                                                |
+
+# Grid System Basics
 The core of SASSGrid is the grid system. Unlike many popular grid systems SASSGrid doesn't include predefined class selectors out of the box, instead allowing you complete flexability to create your own column structure as needed. One of the great features of SASSGrid is that there's now need for a wrapper container around your set of columns unless you want one, giving you more semantically accurate markup.
 
 ### @mixin col()
@@ -196,6 +238,30 @@ The gutter width is a percentage of space that you want to have built-in between
 | $gut-lg    | 20              |
 
 These variables are definedin sassgrid/_variables.scss and can be modified to suit your needs. Please note that these gutter variables are used in the predefined column classes outlined below to generate predefined column classes with and without gutters.
+
+```scss
+.col-2-3 { // 2/3 column with a $gut-sm gutter
+	@include col(2,3,$gut-sm);
+}
+
+.col-1-3-last {
+	// produces a column that's 1/3 of the width of its parent with a $gut-sm gutter.
+	@include col-last(1,3,$gut-sm);
+}
+```
+
+Here are a couple of examples with manually defined gutters.
+
+```scss
+.col-2-3 { // 2/3 column with a 5% gutter
+	@include col(2,3,5);
+}
+
+.col-1-3-last {
+	// produces a column that's 1/3 of the width of its parent with a 5% gutter.
+	@include col-last(1,3,5);
+}
+```
 
 ### Automatically setting up predefined column classes
 Should you find it necessary or helpful to have a predefined set of column classes that you can easily integrate into your markup you can use @mixin col-build.
@@ -476,8 +542,3 @@ In addition to the border-radius mixin we've also included a few useful mixins f
 
 @mixin border-bottom-right-radius($b-radius:$b-radius-default);
 ```
-
-#### TO DO
-- Provide example code for Gutters
-- Add docs for _variables.scss file and the variables contained within
-- Add docs for color variables and how they may be used
