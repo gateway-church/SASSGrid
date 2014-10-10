@@ -27,11 +27,7 @@ __Table of Contents__
 
 ## Basic Usage
 ```scss
-@import 
-	"sassgrid/_variables.scss",
-	"sassgrid/_reset.scss",
-	"sassgrid/_grid.scss",
-	"sassgrid/_mixin.scss";
+@import "_variables.scss","sassgrid/sassgrid.scss";
 
 //Column Number is used to determine to total amount of columns you desire to generate
 $col-number: 4;
@@ -131,14 +127,14 @@ Thank you for using SASSGrid! Below are a few steps to help you get started usin
 
 The first thing you're probably going to want to do is update the _variables.scss file to reflect your project needs. Located at /_variables.scss, the variables file includes many helpful settings that you can use to customize each project. Below is a table of the variables contained in the file by default.
 
-### Font Variables
+#### Font Variables
 
 | Variable     | Description                                                            |
 | --------     | -----------                                                            |
 | $f-primary   | A CSS font declaration for the primary typeface used on your project   |
 | $f-secondary | A CSS font declaration for the secondary typeface used on your project |
 
-### Absolute Color Variables
+#### Absolute Color Variables
 | Variable    | Description                                                 |
 | --------    | -----------                                                 |
 | $black      | The CSS color value you'd like to represent black           |
@@ -151,7 +147,7 @@ The first thing you're probably going to want to do is update the _variables.scs
 | $light-grey | The CSS color value you'd like to represent light grey      |
 | $cream      | The CSS color value you'd like to represent cream/off-white |
 
-### Dynamic Color Variables
+#### Dynamic Color Variables
 
 In cases where projects vary only slightly in color you might choose to use predefined dynamic color variables which can make it easier to rapidly deploy similarly-styled projects.
 
@@ -164,7 +160,7 @@ In cases where projects vary only slightly in color you might choose to use pred
 | $c-footer    | The color you'd like to use for your footer background     |
 | $c-shadows   | A global CSS color value you would like to use for shadows |
 
-### Responsive/Other Variables
+#### Responsive/Other Variables
 
 | Variable                                                  | Description                                                                                                                      |
 | --------                                                  | -----------                                                                                                                      |
