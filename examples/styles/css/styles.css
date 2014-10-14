@@ -1402,8 +1402,10 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .cont {
-  background: #eaeaea;
-  border: 1px solid #CCC;
+  background-color: #563d7c;
+  background-color: rgba(86, 61, 124, 0.15);
+  border: 1px solid #563d7c;
+  border: 1px solid rgba(86, 61, 124, 0.2);
   padding: 20px; }
 
 .row {
