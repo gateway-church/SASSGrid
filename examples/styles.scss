@@ -1,0 +1,96 @@
+/*  This is the SCSS file where most of your
+  site-specific styling should be done.
+*/
+@import "_variables.scss","../sassgrid/sassgrid.scss";
+
+//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;
+
+@include break-contain(desk) {
+  @include col-build(desk,$col-number);
+}
+
+@include break-contain(tablet-desk) {
+  @include col-build(tablet,$col-number);
+}
+
+@include break-contain(v-tablet-tablet) {
+  @include col-build(v-tablet,$col-number);
+}
+
+@include break-contain(mobile-v-tablet) {
+  @include col-build(mobile,$col-number);
+}
+
+@include break-contain(v-mobile-mobile) {
+  @include col-build(v-mobile,$col-number);
+}
+
+.parent-div {
+  /*
+    * Example Usage for grid() mixin*
+    The grid() mixin will take all children of a given parent <div>
+    and make all of its children fit into a grid system defined below.
+    It's important to define all breakpoints to avoid inheritance issues between
+    breakpoints.
+  */
+  
+  @include grid(desk,2,5);
+  @include grid(tablet-desk,2,5);
+  @include grid(v-tablet-tablet,2,5);
+  @include grid(mobile-v-tablet,1,0);
+  @include grid(v-mobile-mobile,1,0);
+}
+
+
+// Sample Column Styles with responsive breakpoints
+.col-1-2 {
+  // Will be a 50% column with a 5% margin down to
+  // the v-tablet breakpoint at which point it becomes 100% width
+  @include col(1,2,5);
+  
+  @include break(v-tablet) {
+    width: 100%;
+    float: none;
+  }
+  
+  &:last-child {
+    @include col-last(1,2,5);
+  }
+  
+}
+
+.col-2-3 {
+  @include col(2,3,5);
+  @include break(v-tablet) {
+    width: 100%;
+    float: none;
+  }
+
+  &:last-child {
+    @include col-last(2,3,5);
+  }
+  
+}
+
+.col-1-3 {
+  @include col(1,3,5);
+  @include break(v-tablet) {
+    width: 100%;
+    float: none;
+  }
+  
+  &:last-child {
+    @include col-last(1,3,5);
+  }
+  
+}
+
+.col-1-3-last {
+  @include col-last(1,3,5);
+    @include break(v-tablet) {
+    width: 100%;
+    float: none;
+  }
+
+}
