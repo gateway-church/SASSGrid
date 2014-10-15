@@ -270,6 +270,39 @@
 <h2>Column pushing and pulling</h2>
 <p>Coming soon!</p>
 
+<hr />
+<!-- **************************************** -->
+<h2>Responsive Grids</h2>
+<p>With SASSGrid it's very quick and easy to setup responsive columns, that is columns that adjust/resize as the size of the viewport/device changes. For example, let's say you want a 4 column layout on desktop and tablet, a 2 column layout for v-tablet and a 1 column layout for mobile...</p>
+
+<div class="row responsive-columns">
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+</div>
+<pre>
+.responsive-columns {
+  div {
+    @include grid(desk,4,$gut-sm);
+    @include grid(tablet,4,$gut-sm);
+    @include grid(v-tablet,2,$gut-sm);
+    @include grid(mobile,1,0);
+    margin-bottom: 15px;
+  }
+}</pre>
+
+<p>Using predefined classes</p>
+
+<div class="row">
+  <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+  <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+  <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+  <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+</div>
+<hr />
+
+
     </div><!-- /.wrapper -->
   </body>
 </html>

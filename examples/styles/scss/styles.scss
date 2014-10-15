@@ -26,7 +26,6 @@ body {
 }
 
 .row {
-  @extend .clearfix;
   padding: 5px 0;
 }
 
@@ -127,6 +126,16 @@ pre {
     @include grid(v-tablet-tablet,2,$gut-sm);
     @include grid(mobile-v-tablet,1,0);
     @include grid(v-mobile-mobile,1,0);
+    margin-bottom: 15px;
+  }
+}
+
+.responsive-columns {
+  div {
+    @include grid(desk,4,$gut-sm);
+    @include grid(tablet,4,$gut-sm);
+    @include grid(v-tablet,2,$gut-sm);
+    @include grid(mobile,1,0);
     margin-bottom: 15px;
   }
 }

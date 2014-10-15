@@ -82,6 +82,10 @@
 	@include clearfix(after);
 }
 
+.row {
+  @extend .clearfix;
+}
+
 //
 // PERCENTAGE BASED GRID
 //
@@ -220,49 +224,40 @@
 @mixin col-build($point,$total-col) {
 	@while $total-col > 1 {
 		.#{$point}-1-#{$total-col}-gut-lg { 
+			//@include multi-column;
 			@include col-lg(1,$total-col);
-			&.last {
-  			margin-right: 0;
-			}
-			
 		}
 		.#{$point}-1-#{$total-col}-gut-med { 
+			//@include multi-column;
 			@include col-med(1,$total-col);
-			&.last {
-  			margin-right: 0;
-			}
 		}
 		.#{$point}-1-#{$total-col}-gut-sm { 
+			//@include multi-column;
 			@include col-sm(1,$total-col);
-			&.last {
-  			margin-right: 0;
-			}
 		}
 		.#{$point}-1-#{$total-col} { 
+			//@include multi-column;
 			@include col-no(1,$total-col);
-			&.last {
-  			margin-right: 0;
-			}
 		}
-		.#{$point}-1-#{$total-col}-gut-lg:nth-child(#{$total-col}n) { 
+		.#{$point}-1-#{$total-col}-gut-lg:nth-of-type(#{$total-col}n) { 
 			margin-right: 0;
 		}
-		.#{$point}-1-#{$total-col}-gut-med:nth-child(#{$total-col}n) { 
+		.#{$point}-1-#{$total-col}-gut-med:nth-of-type(#{$total-col}n) { 
 			margin-right: 0;
 		}
-		.#{$point}-1-#{$total-col}-gut-sm:nth-child(#{$total-col}n) { 
+		.#{$point}-1-#{$total-col}-gut-sm:nth-of-type(#{$total-col}n) { 
 			margin-right: 0;
 		}
-		.#{$point}-1-#{$total-col}-gut-lg:nth-child(#{$total-col}n+1) { 
+		.#{$point}-1-#{$total-col}-gut-lg:nth-of-type(#{$total-col}n+1) { 
 			clear: left;
 		}
-		.#{$point}-1-#{$total-col}-gut-med:nth-child(#{$total-col}n+1) { 
+		.#{$point}-1-#{$total-col}-gut-med:nth-of-type(#{$total-col}n+1) { 
 			clear: left;
 		}
-		.#{$point}-1-#{$total-col}-gut-sm:nth-child(#{$total-col}n+1) { 
+		.#{$point}-1-#{$total-col}-gut-sm:nth-of-type(#{$total-col}n+1) { 
 			clear: left;
 		}
-		.#{$point}-1-#{$total-col}:nth-child(#{$total-col}n+1) { 
+		.#{$point}-1-#{$total-col}:nth-of-type(#{$total-col}n+1) { 
 			clear: left;
 		}
 		.#{$point}-full {
@@ -273,6 +268,16 @@
 		}
 		$total-col: $total-col - 1;
 	}
+}
+
+@mixin col-build-spec($total-col,$gutter-width) {
+	@include col(1,$total-col,$gutter-width);
+		&:nth-of-type(#{$total-col}n) {
+			margin-right: 0;
+		}
+		&:nth-of-type(#{$total-col}n+1) {
+			clear: left;
+		}
 }
 
 
@@ -287,72 +292,32 @@
 @mixin grid($pt-group,$total-col,$gutter-width) {  
 	@if $pt-group == desk {
 		@media only screen and (min-width: $tablet) {
-			@include col(1,$total-col,$gutter-width);
-			&:nth-of-type(#{$total-col}n) {
-				margin-right: 0;
-			}
-			&:nth-of-type(#{$total-col}n+1) {
-				clear: left;
-			}
+			@include multi-column;
+			@include col-build-spec($total-col,$gutter-width);
 		}
 	}
-	@if $pt-group == tablet-desk {
+	@if $pt-group == tablet {
 		@media only screen and (min-width: $v-tablet) and (max-width: $tablet) {
-			@include col(1,$total-col,$gutter-width);
-			&:nth-of-type(#{$total-col}n) {
-				margin-right: 0;
-			}
-			&:nth-of-type(#{$total-col}n+1) {
-				clear: left;
-			}
+			@include multi-column;
+			@include col-build-spec($total-col,$gutter-width);
 		}
 	}
-	@if $pt-group == v-tablet-tablet {
+	@if $pt-group == v-tablet {
 		@media only screen and (min-width: $mobile) and (max-width: $v-tablet) {
-			@include col(1,$total-col,$gutter-width);
-			&:nth-of-type(#{$total-col}n) {
-				margin-right: 0;
-			}
-			&:nth-of-type(#{$total-col}n+1) {
-				clear: left;
-			}
+			@include multi-column;
+			@include col-build-spec($total-col,$gutter-width);
 		}
 	}
-	@if $pt-group == mobile-v-tablet {
+	@if $pt-group == mobile {
 		@media only screen and (min-width: $v-mobile) and (max-width: $mobile) {
-			@include col(1,$total-col,$gutter-width);
-			&:nth-of-type(#{$total-col}n) {
-				margin-right: 0;
-			}
-			&:nth-of-type(#{$total-col}n+1) {
-				clear: left;
-			}
+			@include multi-column;
+			@include col-build-spec($total-col,$gutter-width);
 		}
 	}
-	@else if $pt-group == v-mobile-mobile {
+	@else if $pt-group == v-mobile {
 		@media only screen and (max-width: $v-mobile) {
-			@include col(1,$total-col,$gutter-width);
-			&:nth-of-type(#{$total-col}n) {
-				margin-right: 0;
-			}
-			&:nth-of-type(#{$total-col}n+1) {
-				clear: left;
-			}
+			@include multi-column;
+			@include col-build-spec($total-col,$gutter-width);
 		}
 	}
 }
-
-
-
-
-
-@mixin col-build-spec($total-col,$gutter-width) {
-	@include col(1,$total-col,$gutter-width);
-		&:nth-of-type(#{$total-col}n) {
-			margin-right: 0;
-		}
-		&:nth-of-type(#{$total-col}n+1) {
-			clear: left;
-		}
-}
-
