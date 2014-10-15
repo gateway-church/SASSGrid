@@ -28,14 +28,13 @@
     </div>
     <pre>
 .three_equal_columns {
-div {
-  @include col(1,3,0);
-  &:last-child {
-    @include col-last(1,3,0);
+  div {
+    @include col(1,3,0);
+    &:last-child {
+      @include col-last(1,3,0);
+    }
   }
-}
-}
-    </pre>
+}</pre>
 
 
     <p>Or you can use the predefined classes:</p>
@@ -56,17 +55,16 @@ div {
     </div>
     <pre>
 .three_unequal_columns {
-div {
-  @include col(1,2,0);
-  &:first-child {
-    @include col(1,4,0);
+  div {
+    @include col(1,2,0);
+    &:first-child {
+      @include col(1,4,0);
+    }
+    &:last-child {
+      @include col-last(1,4,0);
+    }
   }
-  &:last-child {
-    @include col-last(1,4,0);
-  }
-}
-}
-    </pre>
+}</pre>
 
     <p>Using predefined classes</p>
     <div class="row">
@@ -90,13 +88,40 @@ div {
       @include col-last(1,2,0);
     }
   }
-}
-    </pre>
+}</pre>
 
     <p>Using predefined classes</p>
     <div class="row">
         <div class="cont desk-1-2">.desk-1-2</div>
         <div class="cont desk-1-2">.desk-1-2</div>
+    </div>
+    <hr />
+<!-- **************************************** -->
+
+
+    <h3>Four equal fluid columns</h3>
+    <div class="row four_equal_columns">
+        <div class="cont"></div>
+        <div class="cont"></div>
+        <div class="cont"></div>
+        <div class="cont"></div>
+    </div>
+    <pre>
+.four_equal_columns {
+  div {
+    @include col(1,4,0);
+    &:last-child {
+      @include col-last(1,4,0);
+    }
+  }
+}</pre>
+
+    <p>Using predefined classes</p>
+    <div class="row">
+        <div class="cont desk-1-4">.desk-1-4</div>
+        <div class="cont desk-1-4">.desk-1-4</div>
+        <div class="cont desk-1-4">.desk-1-4</div>
+        <div class="cont desk-1-4">.desk-1-4</div>
     </div>
     <hr />
 <!-- **************************************** -->
@@ -117,8 +142,7 @@ div {
       @include col-last(1,3,$gut-sm);
     }
   }
-}
-    </pre>
+}</pre>
     
     <p>Or you can use the predefined classes:</p>
 
@@ -147,8 +171,7 @@ div {
       @include col-last(1,4,$gut-sm);
     }
   }
-}
-    </pre>
+}</pre>
 
     <hr />
 <!-- **************************************** -->
@@ -166,14 +189,87 @@ div {
       @include col-last(1,2,$gut-sm);
     }
   }
-}
-    </pre>
+}</pre>
 
     <p>Using predefined classes</p>
     <div class="row">
         <div class="cont desk-1-2-gut-sm">.desk-1-2</div>
         <div class="cont desk-1-2-gut-sm">.desk-1-2</div>
     </div>
+    <hr />
+<!-- **************************************** -->
+
+  <h3>Four equal fluid columns</h3>
+    <div class="row four_equal_columns gutters">
+        <div class="cont"></div>
+        <div class="cont"></div>
+        <div class="cont"></div>
+        <div class="cont"></div>
+    </div>
+    <pre>
+.four_equal_columns {
+  div {
+    @include col(1,4,$gut-sm);
+    &:last-child {
+      @include col-last(1,4,$gut-sm);
+    }
+  }
+}</pre>
+
+    <p>Using predefined classes</p>
+    <div class="row">
+        <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+        <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+        <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+        <div class="cont desk-1-4-gut-sm">.desk-1-4</div>
+    </div>
+    <hr />
+
+<!-- **************************************** -->
+<h2>Smart grids using the @include grid() mixin</h2>
+<p>Sometimes manually defining a grid of columns would be easier if you could just specify a container and tell it to treat every child element as an piece of the grid. We created the grid() mixin for this purpose.</p>
+
+<pre>
+&lt;div class="grid-container"&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+  &lt;div class="cont"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+.grid-container .cont {
+  @include grid(desk,4,$gut-sm);
+  @include grid(tablet-desk,3,$gut-sm);
+  @include grid(v-tablet-tablet,2,$gut-sm);
+  @include grid(mobile-v-tablet,1,0);
+  @include grid(v-mobile-mobile,1,0);
+  margin-bottom: 15px;
+}</pre>
+
+<div class="row grid-container">
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+  <div class="cont"></div>
+</div>
+<p>Notice that the grid is also responsive as you resize your browser. By changing the second argument of the grid() mixin you can specify how many columns the grid should have at a specific breakpoint.</p>
+<hr />
+<!-- **************************************** -->
+<h2>Column pushing and pulling</h2>
+<p>Coming soon!</p>
+
     </div><!-- /.wrapper -->
   </body>
 </html>
