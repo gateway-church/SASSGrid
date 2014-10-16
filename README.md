@@ -32,24 +32,24 @@ __Table of Contents__
 //Column Number is used to determine to total amount of columns you desire to generate
 $col-number: 4;
 
-@include break-contain(desk) {
-	@include col-build(desk,$col-number);
+@include break(desk) {
+  @include col-build(desk,$col-number);
 }
 
-@include break-contain(tablet-desk) {
-	@include col-build(tablet,$col-number);
+@include break(tablet) {
+  @include col-build(tablet,$col-number);
 }
 
-@include break-contain(v-tablet-tablet) {
-	@include col-build(v-tablet,$col-number);
+@include break(v-tablet) {
+  @include col-build(v-tablet,$col-number);
 }
 
-@include break-contain(mobile-v-tablet) {
-	@include col-build(mobile,$col-number);
+@include break(mobile) {
+  @include col-build(mobile,$col-number);
 }
 
-@include break-contain(v-mobile-mobile) {
-	@include col-build(v-mobile,$col-number);
+@include break(v-mobile) {
+  @include col-build(v-mobile,$col-number);
 }
 
 .parent-div {
