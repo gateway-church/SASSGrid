@@ -1287,8 +1287,8 @@ body {
   border: 1px solid #563d7c;
   border: 1px solid rgba(86, 61, 124, 0.2);
   padding: 0 20px;
-  line-height: 2;
-  min-height: 34px; }
+  line-height: 2.4;
+  min-height: 40px; }
 
 .row {
   padding: 5px 0; }
