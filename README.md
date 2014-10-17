@@ -14,15 +14,6 @@ __Table of Contents__
 	* Automatically setting up predefined column classes
 * __[Creating Responsive Breakpoints](https://github.com/gateway-church/SASSGrid/blob/master/README.md#creating-breakpoints)__
 	* @mixin break-contain
-* __[Helpful Mixins](https://github.com/gateway-church/SASSGrid/blob/master/README.md#helpful-mixins)__
-	* @mixin triangle()
-	* @mixin trans-bg()
-	* @mixin gradient()
-	* @mixin gradient-trans()
-	* @mixin transitions()
-	* @mixin outer-glow()
-	* @mixin bevel()
-	* @mixin border-radius()
 
 
 ## Basic Usage
